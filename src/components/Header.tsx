@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import gitHubImage from "../assets/github-mark.svg";
-import mailIcon from "../assets/mail-icon.svg";
+import gitHubImage from "../../public/assets/github-mark.svg";
+import mailIcon from "../../public/assets/mail-icon.svg";
 
 const Header = () => {
   return (

@@ -2,11 +2,11 @@ import './App.css'
 import Header from './Header'
 import Section from "./Section";
 import GlobalStyles from "./GlobalStyles.js";
-import TeamsoftLogo from "../assets/teamsoft.png";
-import AcquiaLogo from "../assets/acquia-dam.webp";
-import EntegralLogo from "../assets/entegral.png";
-import AsicsLogo from "../assets/Asics.png";
-import DeveloperIcon from "../assets/developer.svg";
+import TeamsoftLogo from "../../public/assets/teamsoft.png";
+import AcquiaLogo from "../../public/assets/acquia-dam.webp";
+import EntegralLogo from "../../public/assets/entegral.png";
+import AsicsLogo from "../../public/assets/Asics.png";
+import DeveloperIcon from "../../public/assets/developer.svg";
 import useElementInView from "../hooks/use-element-in-view.js";
 
 

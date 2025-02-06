@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import ReactIcon from "../assets/react.png"
-import EmotionIcon from "../assets/emotion.png"
+import ReactIcon from "../../public/assets/react.png"
+import EmotionIcon from "../../public/assets/emotion.png"
 import styled from "styled-components";
 
 const TechImage = styled.img`
