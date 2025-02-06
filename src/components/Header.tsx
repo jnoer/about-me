@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import gitHubImage from "./images/github-mark.svg";
-import mailIcon from "./images/mail-icon.svg";
+import gitHubImage from "../assets/github-mark.svg";
+import mailIcon from "../assets/mail-icon.svg";
 
 const Header = () => {
   return (
@@ -13,19 +13,22 @@ const Header = () => {
         </a>
 
         <a href="mailto:jason.noer@gmail.com" target="_blank">
-          <img src={mailIcon}/>
+          <img alt="email" src={mailIcon}/>
           jason.noer@gmail.com
         </a>
       </TitleSection>
 
-      <h2>
-        Full-stack software developer
+      {/*<h2 style={{verticalAlign: 'baseline'}}>*/}
+      <h2 >
+        {/*<span style={{color: '#0D158D'}}>&#123;&#123;</span> Full-stack software developer <span style={{color: '#0D158D'}}>&#125;&#125;</span>*/}
+        <span style={{color: 'green'}}>&#123;&#123;</span> Full-stack software developer <span style={{color: 'green'}}>&#125;&#125;</span>
       </h2>
     </StyledHeader>
   )
 }
 
 const StyledHeader = styled.header`
+  // background-color: #0D158D;
   background-color: white;
   color: black;
   height: 20vh;
@@ -42,6 +45,7 @@ const TitleSection = styled.div`
 const StyledH1 = styled.h1`
   color: black;
   flex: 1 1 0;
+  letter-spacing: 3px;
 `
 
 export default Header;
