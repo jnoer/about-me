@@ -1,35 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import gitHubImage from './images/github-mark.svg'
+import Header from './Header'
+import Section from "./Section";
+
+import styled from 'styled-components'
+
+const StyledMain = styled.main`
+  backgroundColor: #0D158D;
+  display: flex;
+  flex-direction: row;
+  minHeight: 80vh;
+`
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <header style={{color: 'black', height: '20%', display: 'flex', flexDirection: 'row', padding: '20px'}}>
-        <h1 style={{color: 'black'}}>Jason Noer</h1>
+      <Header/>
+
+      <StyledMain>
         <div>
-
-          <a href="https://github.com/jnoer/runplanner"><img src={gitHubImage} style={{height: '40px'}}/></a>
+          left side
         </div>
-      </header>
 
-      <main className="card" style={{backgroundColor: '#0D158D', minHeight: '80%'}}>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-
-        <p >
-          Click on the Vite and React logos to learn more
-        </p>
-      </main>
+        <div>
+          <Section></Section>
+          <Section></Section>
+          <Section></Section>
+          <Section></Section>
+          <Section></Section>
+          <Section></Section>
+        </div>
+      </StyledMain>
     </>
   )
 }
