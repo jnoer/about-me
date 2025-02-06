@@ -6,10 +6,10 @@ import Section from "./Section";
 import styled from 'styled-components'
 
 const StyledMain = styled.main`
-  backgroundColor: #0D158D;
+  background-color: #0D158D;
   display: flex;
   flex-direction: row;
-  minHeight: 80vh;
+  min-height: 80vh;
 `
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <Header/>
 
       <StyledMain>
-        <div>
+        <div style={{position: 'fixed'}}>
           left side
         </div>
 
