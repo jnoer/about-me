@@ -7,12 +7,21 @@ const StyledDiv = styled.div`
     padding: 40px;
   `
 
-const Section = ({children, ...rest}) => {
+const Section = ({children, showLine = true, ...rest}) => {
   return (
     <StyledDiv {...rest}>
       {children}
+      {showLine && <VerticalLine/>}
     </StyledDiv>
   )
 }
+
+const VerticalLine = styled.div`
+    height: 70%;
+    left: 50%;
+    position: relative;
+    border-left: 6px dotted grey;
+    top: 20px;
+`
 
 export default Section;

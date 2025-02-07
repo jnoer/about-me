@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import gitHubImage from "../../public/assets/github-mark.svg";
-import mailIcon from "../../public/assets/mail-icon.svg";
+import gitHubImage from "../assets/github-mark.svg";
+import mailIcon from "../assets/mail-icon.svg";
 
 const Header = () => {
   return (
@@ -33,13 +33,13 @@ const StyledHeader = styled.header`
   color: black;
   height: 20vh;
   margin: auto;
-  maxWidth: 1440px; 
+  max-width: 1440px; 
   padding: 20px 40px;
 `
 
 const TitleSection = styled.div`
   display: flex;
-  flexDirection: row;
+  //flex-direction: row;
 `
 
 const StyledH1 = styled.h1`
