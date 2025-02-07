@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import gitHubImage from "../assets/github-mark.svg";
 import mailIcon from "../assets/mail-icon.svg";
+import { motion } from "motion/react";
+import * as React from "react";
 
 const Header = () => {
   return (
     <StyledHeader>
       <TitleSection>
-        <StyledH1>Jason Noer</StyledH1>
+        <StyledH1 initial={{y: '100vh', scale: 0}} animate={{y: 0, scale: 1}} transition={{ delay: 0.5, duration: 0.5, type: 'spring'}}>
+          Jason Noer
+        </StyledH1>
 
         <a href="https://github.com/jnoer/runplanner">
           <img alt="GitHub" src={gitHubImage} style={{height: '40px'}}/>
@@ -42,10 +46,10 @@ const TitleSection = styled.div`
   //flex-direction: row;
 `
 
-const StyledH1 = styled.h1`
+const StyledH1 = styled(motion.h1)`
   color: black;
   flex: 1 1 0;
   letter-spacing: 3px;
 `
 
-export default Header;
+export default React.memo(Header);

@@ -6,129 +6,179 @@ import AcquiaLogo from "../assets/acquia-dam.webp";
 import EntegralLogo from "../assets/entegral.png";
 import AsicsLogo from "../assets/Asics.png";
 import DeveloperIcon from "../assets/developer.svg";
-import useElementInView from "../hooks/use-element-in-view.js";
-
+import Jnoer from "../assets/Noer.png";
 
 import styled from 'styled-components'
 import AsicsDetails from "./AsicsDetails";
 import EntegralDetails from "./EntegralDetails";
 import AcquiaDetails from "./AcquiaDetails";
 import TeamsoftDetails from "./TeamsoftDetails";
+import { motion, useInView, useScroll, useTransform } from 'motion/react';
+import {useEffect, useRef} from 'react';
+import * as React from "react";
 
-const intersectionObserverThreshold = .6;
+// const intersectionObserverThreshold = .6;
 
 function App() {
-  const [asicsRef, asicsIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  const [entegralRef, entegralIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  const [acquiaRef, acquiaIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  const [teamsoftRef, teamsoftInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  const anyCompaniesInView = asicsIsInView || acquiaIsInView || entegralIsInView || teamsoftInView;
+  // const [asicsRef, asicsIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
+  // const [entegralRef, entegralIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
+  // const [acquiaRef, acquiaIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
+  // const [teamsoftRef, teamsoftInView] = useElementInView({ threshold: intersectionObserverThreshold });
+  // const anyCompaniesInView = asicsIsInView || acquiaIsInView || entegralIsInView || teamsoftInView;
+
+  const asicsRef = useRef(null); // rerenders page
+  const entegralRef = useRef(null);
+  const acquiaRef = useRef(null);
+  const teamsoftRef = useRef(null);
+  const asicsInView = useInView(asicsRef);
+  const entegralInView = useInView(entegralRef);
+  const acquiaInView = useInView(acquiaRef);
+  const teamsoftInView = useInView(teamsoftRef);
+
+  useEffect(() => {
+    console.log("Is in view -> ", asicsInView);
+  }, [asicsInView]);
+
+  const { scrollYProgress } = useScroll();
+
+  const background = useTransform(
+    scrollYProgress,
+    [0, 0.2],
+    ['#0D158D', '#FFFFFF']
+  );
+
+  // const opacity = useTransform(
+  //   scrollYProgress,
+  //   [0.2, 0.3],
+  //   [0, 1]
+  // )
 
   let datePosition = 0;
-  if(entegralIsInView) {
-    datePosition = 1;
+
+  if(entegralInView) {
+    datePosition = 34;
   }
-  if(acquiaIsInView) {
-    datePosition = 2;
+  if(acquiaInView) {
+    datePosition = 68;
   }
   if(teamsoftInView) {
-    datePosition = 3;
+    datePosition = 102;
   }
 
+  console.log('rendering App');
 
   return (
     <>
       <GlobalStyles />
 
+      <motion.div style={{
+        color: scrollYProgress > 0.20?'black':'red',
+        position: "fixed",
+        top: 20,
+        left: 0,
+        right: 0,
+        height: 10,
+        originX: 0,
+      }}
+      >{scrollYProgress}</motion.div>
+
       <Header/>
 
-      <StyledMain>
-        {/*<div style={{flex: '1', position: 'fixed'}}>*/}
-        <LeftSide>
-          <div style={{position: 'fixed'}}>
-            datePosition: {datePosition}
+      <StyledMain style={{ background }}>
+        <div style={{display: 'flex'}}>
+          <div style={{color: 'white', fontSize: '1.4rem', paddingTop: '10%', flex: 1}}>
+            A senior developer with years of full-stack experience. Skilled at designing and coding high-performance, high traffic web applications from back-end to front-end. Passionate about performance, security, search and UX.
           </div>
-          {/*TODO: use scroll position instead of anyCompaniesInView*/}
 
-            <YearDisplay>
-              <div style={{
-                position: 'relative',
-                transition: 'transform',
-                transitionDuration: '500ms',
-                transform: `translateY(${-(datePosition * 20)}%`
-              }}>
+          <FirstSection id="first-section" style={{ background, flex: 1 }}>
+            <CompanyImage alt="Developer" style={{color: 'white', margin: 'auto', width: '400px'}} src={DeveloperIcon}/>
+            <img alt="jnoer" src={Jnoer} style={{position: 'relative', top: '-316px', left: '356px'}}/>
+          </FirstSection>
+        </div>
+
+        <div style={{display: 'flex'}}>
+
+          <LeftSide id="left-side">
+            <div id="sticky-container" style={{ position: 'sticky', top: '80px' }}>
+
+            <YearDisplay id="year-display">
+              <motion.div animate={{ y: -datePosition }}>
                 <h2>6/22 - 1/25</h2>
                 <h2>11/21 - 6/22</h2>
                 <h2>4/12 - 11/21</h2>
                 <h2>9/07 - 3/12</h2>
-              </div>
+              </motion.div>
             </YearDisplay>
 
-          <div style={{position: anyCompaniesInView?'fixed':'relative'}}>
-            {!anyCompaniesInView &&
-              (
-                <div style={{fontSize: '1.4rem', paddingTop: '20%'}}>
-                  A senior developer with years of full-stack experience. Skilled at designing and coding high-performance, high traffic web applications from back-end to front-end. Passionate about performance, security, search and UX.
-                </div>
-              )}
+            <motion.div >
+              <motion.div
+                id="asics-details"
+                // layout
+                style={{
+                  opacity: asicsInView ? 1 : 0,
+                  transition: ".5s",
+                  position: asicsInView ? 'static' : 'fixed',
+                }}>
+                <AsicsDetails />
+              </motion.div>
 
-            {asicsIsInView && (
-              <AsicsDetails/>
-            )}
+              <motion.div id="entegral-details" style={{ opacity: entegralInView ? 1 : 0, transition: ".5s" }}>
+                <EntegralDetails/>
+              </motion.div>
 
-            {entegralIsInView && (
-              <EntegralDetails/>
-            )}
+              <motion.div id="acquia-details" style={{ opacity: acquiaInView ? 1 : 0, transition: ".5s" }}>
+                <AcquiaDetails/>
+              </motion.div>
 
-            {acquiaIsInView && (
-              <AcquiaDetails/>
-            )}
+              <motion.div id="acquia-details" style={{ opacity: teamsoftInView ? 1 : 0, transition: ".5s" }}>
+                <TeamsoftDetails/>
+              </motion.div>
+            </motion.div>
 
-            {teamsoftInView && (
-              <TeamsoftDetails/>
-            )}
-          </div>
-        </LeftSide>
+            </div>
+          </LeftSide>
 
-        <RightSide>
-          <FirstSection>
-            <img alt="Developer" style={{color: 'white', margin: 'auto', width: '400px'}} src={DeveloperIcon}/>
-          </FirstSection>
+          <RightSide>
+            <Section id="asics-section">
+              <CompanyImage alt="Asics" src={AsicsLogo} ref={asicsRef} style={{ margin: 'auto' }} />
+            </Section>
 
-          <Section ref={asicsRef}>
-            <img alt="Asics" style={{margin: 'auto'}} src={AsicsLogo} />
-          </Section>
+            <Section id="entegral-section">
+              <CompanyImage alt="Entegral" src={EntegralLogo} ref={entegralRef}/>
+            </Section>
 
-          <Section ref={entegralRef}>
-            <img alt="Entegral" src={EntegralLogo} />
-          </Section>
+            <Section id="acquia-section">
+              <CompanyImage alt="Acquia" src={AcquiaLogo} />
+            </Section>
 
-          <Section ref={acquiaRef}>
-            <img alt="Acquia" src={AcquiaLogo} />
-          </Section>
-
-          <Section ref={teamsoftRef} showLine={false}>
-            <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} style={{backgroundColor: 'white'}}/>
-          </Section>
-        </RightSide>
+            <Section id="teamsoft-section" showLine={false}>
+              <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} style={{backgroundColor: 'white'}}/>
+            </Section>
+          </RightSide>
+        </div>
       </StyledMain>
     </>
   )
 }
 
-const StyledMain = styled.main`
+const CompanyImage = styled.img`
+    margin: auto;
+    width: 60%;
+`
+
+const StyledMain = styled(motion.main)`
   background-color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 80vh;
 `
 
-const StyledTeamsoftLogo = styled.img`
+const StyledTeamsoftLogo = styled(CompanyImage)`
   background-color: white;
   border: 20px solid white;
 `
 
-const FirstSection = styled.div`
+const FirstSection = styled(motion.div)`
   background-color: var(--color-primary);
   color: white;
   height: 80vh;
@@ -136,9 +186,8 @@ const FirstSection = styled.div`
 `
 
 const LeftSide = styled.div`
-  padding: 0px 40px;
-  background-color: var(--color-primary);
-  color: white;
+  padding: 0 40px;
+  color: black;
   flex: 1;
 `
 
@@ -148,9 +197,7 @@ const RightSide = styled.div`
 
 const YearDisplay = styled.div`
   height: 36px;
-  position: fixed;
   overflow: hidden;
-  top: 105px;
 `
 
-export default App
+export default React.memo(App);

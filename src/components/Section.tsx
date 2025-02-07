@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as React from "react";
 
 const StyledDiv = styled.div`
     // border: 2px dashed red;
@@ -24,4 +25,4 @@ const VerticalLine = styled.div`
     top: 20px;
 `
 
-export default Section;
+export default React.memo(Section);

@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import ReactIcon from "../assets/react.png";
 import EmotionIcon from "../assets/emotion.png";
 import styled from "styled-components";
@@ -11,7 +10,7 @@ const TechImage = styled.img`
 const AsicsDetails = () => {
   return (
     <div style={{width: '50%'}}>     {/*TODO: width 50%*/}
-      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} >
+      {/*<motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} >*/}
 
         <h1>ASICS Digital</h1>
 
@@ -22,7 +21,7 @@ const AsicsDetails = () => {
           <TechImage src={ReactIcon}/>
           <TechImage src={EmotionIcon}/>
         </div>
-      </motion.div>
+      {/*</motion.div>*/}
 
 
     </div>
