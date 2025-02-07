@@ -86,13 +86,13 @@ function App() {
 
       <StyledMain style={{ background }}>
         <div style={{display: 'flex'}}>
-          <div style={{color: 'white', fontSize: '1.4rem', paddingTop: '10%', flex: 1}}>
+          <div style={{color: 'white', fontSize: '1.4rem', padding: '150px 40px', flex: 1}}>
             A senior developer with years of full-stack experience. Skilled at designing and coding high-performance, high traffic web applications from back-end to front-end. Passionate about performance, security, search and UX.
           </div>
 
           <FirstSection id="first-section" style={{ background, flex: 1 }}>
             <CompanyImage alt="Developer" style={{color: 'white', margin: 'auto', width: '400px'}} src={DeveloperIcon}/>
-            <img alt="jnoer" src={Jnoer} style={{position: 'relative', top: '-316px', left: '356px'}}/>
+            {/*<img alt="jnoer" src={Jnoer} style={{position: 'relative', top: '-316px', left: '356px'}}/>*/}
           </FirstSection>
         </div>
 
