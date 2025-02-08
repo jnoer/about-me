@@ -5,6 +5,7 @@ import {ReactNode} from "react";
 interface Props {
   children?: ReactNode,
   id?: string,
+  ref?: React.Ref<any>,
   showLine?: boolean,
 }
 
