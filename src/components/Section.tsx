@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as React from "react";
 import {ReactNode} from "react";
+import {device} from "../styles/styles.ts";
 
 interface Props {
   children?: ReactNode,
@@ -10,9 +11,12 @@ interface Props {
 }
 
 const StyledDiv = styled.div`
-    color: black;
+    //color: black;
     height: 100vh;
-    padding: 40px;
+    
+    @media ${device.desktop} {  
+        padding: 40px;
+    }
   `
 
 const Section = ({ children, showLine = true, ...rest } : Props) => {

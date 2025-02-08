@@ -3,6 +3,7 @@ import gitHubImage from "../assets/github-mark.svg";
 import mailIcon from "../assets/mail-icon.svg";
 import { motion } from "motion/react";
 import * as React from "react";
+import {device} from "../styles/styles.ts";
 
 const Header = () => {
   return (
@@ -10,13 +11,13 @@ const Header = () => {
       <TitleSection>
         <StyledH1
           initial={{x: 0, y: '100vh', scale: 3}}
-          animate={{x: 0, y: 0, scale: 1 }}
+          animate={{x: 0, y: '0vh', scale: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           Jason Noer
         </StyledH1>
 
-        <motion.div style={{display: 'flex', gap: '10px', paddingRight: '165px'}}>
+        <motion.div style={{display: 'flex', gap: '10px', flex: '1 1 0', justifyContent: 'center'}}>
           <a href="https://github.com/jnoer/about-me/" target="_blank">
             <motion.img
               alt="GitHub"
@@ -39,11 +40,11 @@ const Header = () => {
         </motion.div>
       </TitleSection>
 
-      <h2 >
-        <span style={{color: 'green'}}>&#123;&#123;</span>
+      <StyledH2 style={{marginTop: '15px'}}>
+        <span style={{ color: 'green', marginRight: '6px' }}>&#123;&#123;</span>
           Full-stack software developer
-        <span style={{color: 'green'}}>&#125;&#125;</span>
-      </h2>
+        <span style={{color: 'green', marginLeft: '6px'}}>&#125;&#125;</span>
+      </StyledH2>
     </StyledHeader>
   )
 }
@@ -55,18 +56,29 @@ const StyledHeader = styled.header`
   margin: auto;
   max-width: 1440px; 
   padding: 20px 40px;
-  position: 'static';
 `
 
 const TitleSection = styled.div`
   display: flex;
-  //flex-direction: row;
 `
 
 const StyledH1 = styled(motion.h1)`
   color: black;
   flex: 1 1 0;
   letter-spacing: 3px;
+    
+  // @media ${device.mobile} {
+  //     font-size: 20px;
+  // }
+`
+
+const StyledH2 = styled.h2`
+    @media ${device.mobile} {
+        font-size: 16px;
+    }
+    @media ${device.desktop} {
+        font-size: 24px;
+    }
 `
 
 export default React.memo(Header);

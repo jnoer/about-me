@@ -1,12 +1,12 @@
-import { motion } from "motion/react";
+import WorkDetails from "./WorkDetails.tsx";
 
 const TeamsoftDetails = () => {
   return (
-    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+    <WorkDetails>
       <h1>Teamsoft</h1>
 
       <p>Worked at Teamsoft</p>
-    </motion.div>
+    </WorkDetails>
   )
 }
 
