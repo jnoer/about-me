@@ -1,6 +1,6 @@
 import Header from './Header'
 import Section from "./Section";
-import GlobalStyles from "./GlobalStyles.js";
+import GlobalStyles from "./GlobalStyles.ts";
 import TeamsoftLogo from "../assets/teamsoft.png";
 import AcquiaLogo from "../assets/acquia-dam.webp";
 import EntegralLogo from "../assets/entegral.png";
