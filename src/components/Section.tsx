@@ -4,7 +4,8 @@ import {ReactNode} from "react";
 
 interface Props {
   children?: ReactNode,
-  showLine: boolean,
+  id?: string,
+  showLine?: boolean,
 }
 
 const StyledDiv = styled.div`
