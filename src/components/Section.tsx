@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import * as React from "react";
+import {ReactNode} from "react";
+
+interface Props {
+  children?: ReactNode,
+  showLine: boolean,
+}
 
 const StyledDiv = styled.div`
     color: black;
@@ -7,7 +13,7 @@ const StyledDiv = styled.div`
     padding: 40px;
   `
 
-const Section = ({ children, showLine = true, ...rest }) => {
+const Section = ({ children, showLine = true, ...rest } : Props) => {
   return (
     <StyledDiv {...rest}>
       {children}
