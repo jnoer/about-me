@@ -2,7 +2,6 @@ import styled from "styled-components";
 import * as React from "react";
 
 const StyledDiv = styled.div`
-    // border: 2px dashed red;
     color: black;
     height: 100vh;
     padding: 40px;
@@ -23,6 +22,7 @@ const VerticalLine = styled.div`
     position: relative;
     border-left: 6px dotted grey;
     top: 20px;
+    width: 6px;
 `
 
 export default React.memo(Section);
