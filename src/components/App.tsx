@@ -83,7 +83,7 @@ function App() {
               <motion.img
                 alt="jnoer"
                 src={Jnoer}
-                style={{opacity, translateY, position: 'relative', margin: 'auto', top: '30px'}}
+                style={{opacity, translateY, position: 'relative', margin: 'auto', top: '32px'}}
                 whileHover={{ rotate: "-2.5deg", transformOrigin: '100% 100%', scale: 1.05 }}
               />
             </div>
