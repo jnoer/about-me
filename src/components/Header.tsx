@@ -8,31 +8,47 @@ const Header = () => {
   return (
     <StyledHeader>
       <TitleSection>
-        <StyledH1 initial={{y: '100vh', scale: 0}} animate={{y: 0, scale: 1}} transition={{ delay: 0.5, duration: 0.5, type: 'spring'}}>
+        <StyledH1
+          initial={{x: 0, y: '100vh', scale: 3}}
+          animate={{x: 0, y: 0, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
           Jason Noer
         </StyledH1>
 
-        <a href="https://github.com/jnoer/runplanner">
-          <img alt="GitHub" src={gitHubImage} style={{height: '40px'}}/>
-        </a>
+        <motion.div style={{display: 'flex', gap: '10px', paddingRight: '165px'}}>
+          <a href="https://github.com/jnoer/about-me/" target="_blank">
+            <motion.img
+              alt="GitHub"
+              src={gitHubImage}
+              style={{height: '40px'}}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          </a>
 
-        <a href="mailto:jason.noer@gmail.com" target="_blank">
-          <img alt="email" src={mailIcon}/>
-          jason.noer@gmail.com
-        </a>
+          <a href="mailto:jason.noer@gmail.com" target="_blank">
+            <motion.img
+              alt="email"
+              src={mailIcon}
+              style={{width: '50px', marginTop: '-3px'}}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          </a>
+        </motion.div>
       </TitleSection>
 
-      {/*<h2 style={{verticalAlign: 'baseline'}}>*/}
       <h2 >
-        {/*<span style={{color: '#0D158D'}}>&#123;&#123;</span> Full-stack software developer <span style={{color: '#0D158D'}}>&#125;&#125;</span>*/}
-        <span style={{color: 'green'}}>&#123;&#123;</span> Full-stack software developer <span style={{color: 'green'}}>&#125;&#125;</span>
+        <span style={{color: 'green'}}>&#123;&#123;</span>
+          Full-stack software developer
+        <span style={{color: 'green'}}>&#125;&#125;</span>
       </h2>
     </StyledHeader>
   )
 }
 
 const StyledHeader = styled.header`
-  // background-color: #0D158D;
   background-color: white;
   color: black;
   height: 20vh;

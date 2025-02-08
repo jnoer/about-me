@@ -17,15 +17,7 @@ import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import {useEffect, useRef} from 'react';
 import * as React from "react";
 
-// const intersectionObserverThreshold = .6;
-
 function App() {
-  // const [asicsRef, asicsIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  // const [entegralRef, entegralIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  // const [acquiaRef, acquiaIsInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  // const [teamsoftRef, teamsoftInView] = useElementInView({ threshold: intersectionObserverThreshold });
-  // const anyCompaniesInView = asicsIsInView || acquiaIsInView || entegralIsInView || teamsoftInView;
-
   const asicsRef = useRef(null); // rerenders page
   const entegralRef = useRef(null);
   const acquiaRef = useRef(null);
@@ -36,7 +28,7 @@ function App() {
   const teamsoftInView = useInView(teamsoftRef);
 
   useEffect(() => {
-    console.log("Is in view -> ", asicsInView);
+    console.log("asics is in view -> ", asicsInView);
   }, [asicsInView]);
 
   const { scrollYProgress } = useScroll();
@@ -47,22 +39,28 @@ function App() {
     ['#0D158D', '#FFFFFF']
   );
 
-  // const opacity = useTransform(
-  //   scrollYProgress,
-  //   [0.2, 0.3],
-  //   [0, 1]
-  // )
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2],
+    [1, 0]
+  );
+
+  const translateY = useTransform(
+    scrollYProgress,
+    [0, 0.2],
+    [0, 200]
+  );
 
   let datePosition = 0;
 
   if(entegralInView) {
-    datePosition = 34;
+    datePosition = 36;
   }
   if(acquiaInView) {
-    datePosition = 68;
+    datePosition = 72;
   }
   if(teamsoftInView) {
-    datePosition = 102;
+    datePosition = 108;
   }
 
   console.log('rendering App');
@@ -71,70 +69,61 @@ function App() {
     <>
       <GlobalStyles />
 
-      <motion.div style={{
-        color: scrollYProgress > 0.20?'black':'red',
-        position: "fixed",
-        top: 20,
-        left: 0,
-        right: 0,
-        height: 10,
-        originX: 0,
-      }}
-      >{scrollYProgress}</motion.div>
-
-      <Header/>
+      <Header style={{ position: 'static'}} />
 
       <StyledMain style={{ background }}>
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex',  maxWidth: '1440px', margin: 'auto'}} >
           <div style={{color: 'white', fontSize: '1.4rem', padding: '150px 40px', flex: 1}}>
             A senior developer with years of full-stack experience. Skilled at designing and coding high-performance, high traffic web applications from back-end to front-end. Passionate about performance, security, search and UX.
           </div>
 
-          <FirstSection id="first-section" style={{ background, flex: 1 }}>
+          <Monitor id="monitor" style={{ flex: 1 }}>
             <CompanyImage alt="Developer" style={{color: 'white', margin: 'auto', width: '400px'}} src={DeveloperIcon}/>
-            {/*<img alt="jnoer" src={Jnoer} style={{position: 'relative', top: '-316px', left: '356px'}}/>*/}
-          </FirstSection>
+            <div style={{ height: '218px', overflow: 'clip', top: '-327px', position: 'relative'}}>
+              <motion.img
+                alt="jnoer"
+                src={Jnoer}
+                style={{opacity, translateY, position: 'relative', margin: 'auto', top: '30px'}}/>
+            </div>
+          </Monitor>
         </div>
 
         <div style={{display: 'flex'}}>
-
           <LeftSide id="left-side">
-            <div id="sticky-container" style={{ position: 'sticky', top: '80px' }}>
+            <div id="sticky-div" style={{ position: 'sticky', top: '80px' }}>
+              <YearDisplay id="year-display">
+                <motion.div animate={{ y: -datePosition }}>
+                  <h2>2022 - 2025</h2>
+                  <h2>2021 - 2022</h2>
+                  <h2>2012 - 2021</h2>
+                  <h2>2007 - 2012</h2>
+                </motion.div>
+              </YearDisplay>
 
-            <YearDisplay id="year-display">
-              <motion.div animate={{ y: -datePosition }}>
-                <h2>6/22 - 1/25</h2>
-                <h2>11/21 - 6/22</h2>
-                <h2>4/12 - 11/21</h2>
-                <h2>9/07 - 3/12</h2>
+              <motion.div >
+                <motion.div
+                  id="asics-details"
+                  // layout
+                  style={{
+                    opacity: asicsInView ? 1 : 0,
+                    transition: ".5s",
+                    position: asicsInView ? 'static' : 'fixed',
+                  }}>
+                  <AsicsDetails />
+                </motion.div>
+
+                <motion.div id="entegral-details" style={{ opacity: entegralInView ? 1 : 0, transition: ".5s" }}>
+                  <EntegralDetails/>
+                </motion.div>
+
+                <motion.div id="acquia-details" style={{ opacity: acquiaInView ? 1 : 0, transition: ".5s" }}>
+                  <AcquiaDetails/>
+                </motion.div>
+
+                <motion.div id="teamsoft-details" style={{ opacity: teamsoftInView ? 1 : 0, transition: ".5s" }}>
+                  <TeamsoftDetails/>
+                </motion.div>
               </motion.div>
-            </YearDisplay>
-
-            <motion.div >
-              <motion.div
-                id="asics-details"
-                // layout
-                style={{
-                  opacity: asicsInView ? 1 : 0,
-                  transition: ".5s",
-                  position: asicsInView ? 'static' : 'fixed',
-                }}>
-                <AsicsDetails />
-              </motion.div>
-
-              <motion.div id="entegral-details" style={{ opacity: entegralInView ? 1 : 0, transition: ".5s" }}>
-                <EntegralDetails/>
-              </motion.div>
-
-              <motion.div id="acquia-details" style={{ opacity: acquiaInView ? 1 : 0, transition: ".5s" }}>
-                <AcquiaDetails/>
-              </motion.div>
-
-              <motion.div id="acquia-details" style={{ opacity: teamsoftInView ? 1 : 0, transition: ".5s" }}>
-                <TeamsoftDetails/>
-              </motion.div>
-            </motion.div>
-
             </div>
           </LeftSide>
 
@@ -148,10 +137,10 @@ function App() {
             </Section>
 
             <Section id="acquia-section">
-              <CompanyImage alt="Acquia" src={AcquiaLogo} />
+              <CompanyImage alt="Acquia" src={AcquiaLogo} ref={acquiaRef} />
             </Section>
 
-            <Section id="teamsoft-section" showLine={false}>
+            <Section id="teamsoft-section" showLine={false} ref={teamsoftRef}>
               <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} style={{backgroundColor: 'white'}}/>
             </Section>
           </RightSide>
@@ -171,6 +160,7 @@ const StyledMain = styled(motion.main)`
   display: flex;
   flex-direction: column;
   min-height: 80vh;
+ //maxWidth: 1440px;
 `
 
 const StyledTeamsoftLogo = styled(CompanyImage)`
@@ -178,8 +168,7 @@ const StyledTeamsoftLogo = styled(CompanyImage)`
   border: 20px solid white;
 `
 
-const FirstSection = styled(motion.div)`
-  background-color: var(--color-primary);
+const Monitor = styled.div`
   color: white;
   height: 80vh;
   padding: 40px;
