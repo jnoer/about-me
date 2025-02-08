@@ -1,5 +1,7 @@
 # Jason Noer
 
+<https://jasonnoer-resume.netlify.app/>
+
 ![](https://github.com/jnoer/about-me/blob/main/website.png?raw=true)
 
 Made with:
