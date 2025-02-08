@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
     padding: 40px;
   `
 
-const Section = ({children, showLine = true, ...rest}) => {
+const Section = ({ children, showLine = true, ...rest }) => {
   return (
     <StyledDiv {...rest}>
       {children}

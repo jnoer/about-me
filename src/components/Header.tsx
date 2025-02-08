@@ -55,6 +55,7 @@ const StyledHeader = styled.header`
   margin: auto;
   max-width: 1440px; 
   padding: 20px 40px;
+  position: 'static';
 `
 
 const TitleSection = styled.div`

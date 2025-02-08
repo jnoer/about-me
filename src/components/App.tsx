@@ -69,7 +69,7 @@ function App() {
     <>
       <GlobalStyles />
 
-      <Header style={{ position: 'static'}} />
+      <Header />
 
       <StyledMain style={{ background }}>
         <div style={{display: 'flex',  maxWidth: '1440px', margin: 'auto'}} >
