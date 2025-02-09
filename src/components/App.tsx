@@ -6,7 +6,7 @@ import AcquiaLogo from "../assets/acquia-dam.webp";
 import EntegralLogo from "../assets/entegral.png";
 import AsicsLogo from "../assets/Asics.png";
 import DeveloperIcon from "../assets/developer.svg";
-import Jnoer from "../assets/Noer.png";
+import Jnoer from "../assets/jnoer.png";
 
 import styled from 'styled-components'
 import AsicsDetails from "./AsicsDetails";
@@ -14,9 +14,11 @@ import EntegralDetails from "./EntegralDetails";
 import AcquiaDetails from "./AcquiaDetails";
 import TeamsoftDetails from "./TeamsoftDetails";
 import { motion, useInView, useScroll, useTransform } from 'motion/react';
-import {useEffect, useRef} from 'react';
+import {useRef, useState} from 'react';
 import * as React from "react";
 import {device} from "../styles/styles.ts";
+
+const datePositions = [0, 36, 72, 108]
 
 function App() {
   const asicsRef = useRef(null); // rerenders page
@@ -28,10 +30,7 @@ function App() {
   const acquiaInView = useInView(acquiaRef, { margin: "-100px"});
   const teamsoftInView = useInView(teamsoftRef, { margin: "-100px"});
 
-  useEffect(() => {
-    console.log("asics is in view -> ", asicsInView);
-  }, [asicsInView]);
-
+  const [datePosition, setDatePosition] = useState(0);
   const { scrollYProgress } = useScroll();
 
   const background = useTransform(
@@ -40,11 +39,11 @@ function App() {
     ['#0D158D', '#FFFFFF']
   );
 
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    [1, 0]
-  );
+  // const opacity = useTransform(
+  //   scrollYProgress,
+  //   [0, 0.2],
+  //   [1, 0]
+  // );
 
   const translateY = useTransform(
     scrollYProgress,
@@ -58,35 +57,38 @@ function App() {
     [0, -15],
   )
 
-  let datePosition = 0;
+  // let datePosition = 0;
 
-  if(entegralInView) {
-    datePosition = 36;
-  }
-  if(acquiaInView) {
-    datePosition = 72;
-  }
-  if(teamsoftInView) {
-    datePosition = 108;
-  }
+  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  //   console.log("Page scroll: ", latest)
+  // })
 
-  console.log('rendering App');
-
-  const SubHeader = styled.div`
-    @media ${device.mobile} {
-        flex-direction: column;
-    }
-    @media ${device.desktop} {
-        flex-direction: row;
-    }
-    display: flex;
-    max-width: 1440px;
-    //margin: auto;
-  `
+  if(asicsInView && !acquiaInView && !teamsoftInView && !entegralInView && datePosition !== datePositions[0]) {
+    setDatePosition(datePositions[0]);
+  }
+  if(entegralInView && !asicsInView && !acquiaInView && !teamsoftInView && datePosition !== datePositions[1]) {
+    setDatePosition(datePositions[1]);
+  }
+  else if(acquiaInView && !asicsInView && !entegralInView && !teamsoftInView && datePosition !== datePositions[2]) {
+    setDatePosition(datePositions[2]);
+  }
+  else if(teamsoftInView && !asicsInView && !acquiaInView && !entegralInView && datePosition !== datePositions[3]) {
+    setDatePosition(datePositions[3]);
+  }
 
   return (
     <>
       <GlobalStyles />
+
+      <motion.div style={{
+        position: "fixed",
+        top: 20,
+        left: 0,
+        right: 0,
+        height: 10,
+        originX: 0,
+      }}
+      >{scrollYProgress}</motion.div>
 
       <Header />
 
@@ -105,7 +107,7 @@ function App() {
               <motion.img
                 alt="jnoer"
                 src={Jnoer}
-                style={{opacity, rotate, translateY, position: 'relative', margin: 'auto', transformOrigin: '100% 100%'}}
+                style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
                 whileHover={{ rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 }}
               />
             </ClipContainer>
@@ -118,7 +120,7 @@ function App() {
             <div id="sticky-div" style={{ position: 'sticky', top: '80px' }}>
               <DateBracket style={{ right: 'px' }}>[</DateBracket>
               <YearDisplay id="year-display">
-                <motion.div animate={{ y: -datePosition }} transition={{ delay: 0.5, duration: 0.5 }}>
+                <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
                   <h2>2022 - 2025</h2>
                   <h2>2021 - 2022</h2>
                   <h2>2012 - 2021</h2>
@@ -128,43 +130,10 @@ function App() {
               <DateBracket style={{ left: '5px' }}>]</DateBracket>
 
               <div>
-                {asicsInView && (
-                // <motion.div initial={{opacity: 0}} animate={{opacity: 1}}
-                //   id="asics-details"
-                  // layout
-                  // style={{
-                  //   opacity: asicsInView ? 1 : 0,
-                  //   transition: ".5s",
-                  //   position: asicsInView ? 'static' : 'fixed',
-                  // }}
-                // >
-                  <AsicsDetails />
-                // </motion.div>
-                )}
-
-                {/*<motion.div id="entegral-details" style={{ opacity: entegralInView ? 1 : 0, transition: ".5s" }}>*/}
-                {/*  <EntegralDetails/>*/}
-                {/*</motion.div>*/}
-
-                {entegralInView && (
-                <motion.div id="entegral-details">
-                  <EntegralDetails/>
-                </motion.div>
-                  )}
-
-                {acquiaInView && (
-                // <motion.div id="acquia-details" style={{ opacity: acquiaInView ? 1 : 0, transition: ".5s" }}>
-                <motion.div id="acquia-details">
-                  <AcquiaDetails/>
-                </motion.div>
-                  )}
-
-                {teamsoftInView && (
-                // <motion.div id="teamsoft-details" style={{ opacity: teamsoftInView ? 1 : 0, transition: ".5s" }}>
-                <motion.div id="teamsoft-details">
-                  <TeamsoftDetails/>
-                </motion.div>
-                  )}
+                {asicsInView && <AsicsDetails />}
+                {entegralInView && <EntegralDetails/>}
+                {acquiaInView && <AcquiaDetails/>}
+                {teamsoftInView && <TeamsoftDetails/>}
               </div>
             </div>
           </LeftSide>
@@ -192,6 +161,16 @@ function App() {
   )
 }
 
+const SubHeader = styled.div`
+    @media ${device.mobile} {
+        flex-direction: column-reverse;
+    }
+    @media ${device.desktop} {
+        flex-direction: row;
+    }
+    display: flex;
+    max-width: 1440px;
+  `
 const AvatarImagesContainer = styled.div`
     position:relative;
     width:400px;
@@ -225,7 +204,6 @@ const StyledMain = styled(motion.main)`
   display: flex;
   flex-direction: column;
   min-height: 80vh;
- //max-width: 1440px;
 `
 
 const StyledTeamsoftLogo = styled(CompanyImage)`
@@ -234,24 +212,26 @@ const StyledTeamsoftLogo = styled(CompanyImage)`
 `
 
 const SubHeaderLeft = styled.div`
-      color: white;
-      font-size: 1.4rem;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 500;
 
-      @media ${device.mobile} {
-          padding: 50px 30px;
-          width: 100%;
-      }
-      @media ${device.desktop} {
-          padding: 150px 40px;
-          width: 50%;
-      }
+    @media ${device.mobile} {
+        padding: 50px 30px;
+        width: 100%;
+    }
+  
+    @media ${device.desktop} {
+        padding: 150px 80px;
+        width: 50%;
+    }
   `
 
 const SubHeaderRight = styled.div`
   color: white;
     
   @media ${device.mobile} {
-      height: 60vh;
+      //height: 60vh;
       width: 100%;
   }
   @media ${device.desktop} {
@@ -262,13 +242,32 @@ const SubHeaderRight = styled.div`
 `
 
 const LeftSide = styled.div`
-  padding: 0 40px;
   color: black;
-  flex: 1;
+  //flex: 1;
+
+    
+    @media ${device.mobile} {
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    @media ${device.desktop} {
+        padding: 0 40px 0 80px;
+        width: 60%;
+    }
 `
 
+
 const RightSide = styled.div`
-  flex: 1;
+    @media ${device.mobile} {
+    visibility: hidden;
+        width: 0;
+  }
+
+    @media ${device.mobile} {
+        visibility: visible;
+        width: 40%;
+    }
 `
 
 const YearDisplay = styled.div`

@@ -10,8 +10,7 @@ interface Props {
   showLine?: boolean,
 }
 
-const StyledDiv = styled.div`
-    //color: black;
+const StyledSection = styled.div`
     height: 100vh;
     
     @media ${device.desktop} {  
@@ -21,10 +20,10 @@ const StyledDiv = styled.div`
 
 const Section = ({ children, showLine = true, ...rest } : Props) => {
   return (
-    <StyledDiv {...rest}>
+    <StyledSection {...rest}>
       {children}
       {showLine && <VerticalLine/>}
-    </StyledDiv>
+    </StyledSection>
   )
 }
 
