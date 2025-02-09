@@ -11,15 +11,15 @@ interface Props {
 const WorkDetails = ({ children, title } : Props) => {
   return (
     <>
-    <Title>{title}</Title>
-    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} style={{fontSize: '24px'}}>
+    <Title initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .3}}>{title}</Title>
+    <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}>
       {children}
-    </motion.div>
+    </Description>
     </>
   )
 }
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
     color: #444444;
     
     @media ${device.mobile} {
@@ -28,6 +28,16 @@ const Title = styled.h1`
     
     @media ${device.desktop} {
         font-size: 32px;
+    }
+`
+
+const Description = styled(motion.div)`
+    @media ${device.mobile} {
+        font-size: 16px;
+    }
+
+    @media ${device.desktop} {
+        font-size: 24px;
     }
 `
 

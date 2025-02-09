@@ -64,7 +64,6 @@ function App() {
   // let datePosition = 0;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(latest);
     if(isScrolledToTop && latest > 0.001) {
       setIsScrolledToTop(false);
     }
@@ -106,20 +105,9 @@ function App() {
     <>
       <GlobalStyles />
 
-      {/*<motion.div style={{*/}
-      {/*  position: "fixed",*/}
-      {/*  top: 20,*/}
-      {/*  left: 0,*/}
-      {/*  right: 0,*/}
-      {/*  height: 10,*/}
-      {/*  originX: 0,*/}
-      {/*}}*/}
-      {/*>{scrollYProgress}</motion.div>*/}
-
       <Header />
 
       <StyledMain style={{ background }}>
-        isScrolledToTop: {isScrolledToTop?'true':'false'};
         <SubHeader>
           {/*<div style={{color: 'white', fontSize: '1.4rem', padding: '150px 40px', flex: 1}}>*/}
           <SubHeaderLeft>
@@ -147,17 +135,18 @@ function App() {
         <div style={{display: 'flex'}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '80px' }}>
-              {/*<DateBracket style={{ color: '#444444', right: '6px' }}>[</DateBracket>*/}
-              <DateBracket style={{ color: 'mediumaquamarine', right: '8px' }}>[</DateBracket>
-              <YearDisplay id="year-display">
-                <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
-                  <h2>2022 - 2025</h2>
-                  <h2>2021 - 2022</h2>
-                  <h2>2012 - 2021</h2>
-                  <h2>2007 - 2012</h2>
-                </motion.div>
-              </YearDisplay>
-              <DateBracket style={{ color: 'mediumaquamarine', left: '5px' }}>]</DateBracket>
+              <div style={{fontFamily: 'Helvetica'}}>
+                <DateBracket style={{ right: '6px' }}>[</DateBracket>
+                <YearDisplay id="year-display">
+                  <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
+                    <h2>2022 - 2025</h2>
+                    <h2>2021 - 2022</h2>
+                    <h2>2012 - 2021</h2>
+                    <h2>2007 - 2012</h2>
+                  </motion.div>
+                </YearDisplay>
+                <DateBracket style={{ left: '5px' }}>]</DateBracket>
+              </div>
 
               <div>
                 {isAsicsInView() && <AsicsDetails/>}
@@ -192,48 +181,50 @@ function App() {
 }
 
 const SubHeader = styled.div`
-    @media ${device.mobile} {
-        flex-direction: column-reverse;
-    }
-    @media ${device.desktop} {
-        flex-direction: row;
-    }
-    display: flex;
-    max-width: 1440px;
-  `
+  @media ${device.mobile} {
+      flex-direction: column-reverse;
+  }
+  @media ${device.desktop} {
+      flex-direction: row;
+  }
+  display: flex;
+  max-width: 1440px;
+`
 const AvatarImagesContainer = styled.div`
-    position:relative;
-    width:400px;
-    margin:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  position:relative;
+  width:400px;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `
 
 const ClipContainer = styled.div`
-    overflow: clip;
-    position: absolute;
-    transform: translateY(-2px);
+  overflow: clip;
+  position: absolute;
+  transform: translateY(-2px);
 `
 
-const DateBracket = styled.span`
-    color: var(--color-primary);
-    font-size: 32px;
-    position: relative;
-    top: -8px;
+const DateBracket = styled.h2`
+    font-family: 'Roboto Thin';
+    font-size: 34px;
+    font-weight: 700;
+  color: dodgerblue;
+  display: inline-block;
+  position: relative;
+  top: -9px;
 `
 
 const CompanyImage = styled.img`
-    margin: auto;
-    
-    @media ${device.mobile} {
-        width: 90%;
-    }
-    
-    @media ${device.desktop} {
-        width: 60%;
-    }
-    
+  margin: auto;
+  
+  @media ${device.mobile} {
+      width: 90%;
+  }
+  
+  @media ${device.desktop} {
+      width: 60%;
+  }
 `
 
 const StyledMain = styled(motion.main)`
@@ -249,20 +240,20 @@ const StyledTeamsoftLogo = styled(CompanyImage)`
 `
 
 const SubHeaderLeft = styled.div`
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 500;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
 
-    @media ${device.mobile} {
-        padding: 10px 30px 60px 30px;
-        width: 100%;
-    }
-  
-    @media ${device.desktop} {
-        padding: 8% 80px;
-        width: 50%;
-    }
-  `
+  @media ${device.mobile} {
+      padding: 10px 30px 60px 30px;
+      width: 100%;
+  }
+
+  @media ${device.desktop} {
+      padding: 8% 80px;
+      width: 50%;
+  }
+`
 
 const SubHeaderRight = styled.div`
   color: white;

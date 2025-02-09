@@ -63,10 +63,6 @@ const LinkContainer = styled.div`
     }
 `
 
-// const Background = styled.div`
-//     background-image: radial-gradient(circle at top right, var(--color-primary), rgba(255, 71, 133, 0));
-// `
-
 const StyledHeader = styled.header`
   background-color: white;
   color: black;
@@ -77,16 +73,20 @@ const StyledHeader = styled.header`
 `
 
 const TitleSection = styled.div`
-    font-family: "Google Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Google Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   display: flex;
 `
 
 const StyledH1 = styled(motion.h1)`
   color: black;
-  //flex: 1 1 0;
+  flex: 1 1 0;
   letter-spacing: 3px;
     
   @media ${device.mobile} {
+      font-size: 24px;
+  }
+
+  @media ${device.desktop} {
       font-size: 26px;
   }
 `
