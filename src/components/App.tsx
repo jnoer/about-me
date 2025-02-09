@@ -1,5 +1,5 @@
 import Header from './Header'
-import Section from "./Section";
+import CompanyImageContainer from "./CompanyImageContainer.tsx";
 import GlobalStyles from "./GlobalStyles.ts";
 import TeamsoftLogo from "../assets/teamsoft.png";
 import AcquiaLogo from "../assets/acquia-dam.webp";
@@ -13,9 +13,8 @@ import AsicsDetails from "./AsicsDetails";
 import EntegralDetails from "./EntegralDetails";
 import AcquiaDetails from "./AcquiaDetails";
 import TeamsoftDetails from "./TeamsoftDetails";
-import { motion, useInView, useScroll, useTransform } from 'motion/react';
+import { motion, useInView, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
 import {useRef, useState} from 'react';
-import * as React from "react";
 import {device} from "../styles/styles.ts";
 
 const datePositions = [0, 36, 72, 108]
@@ -25,12 +24,17 @@ function App() {
   const entegralRef = useRef(null);
   const acquiaRef = useRef(null);
   const teamsoftRef = useRef(null);
-  const asicsInView = useInView(asicsRef, { margin: "-100px"});
-  const entegralInView = useInView(entegralRef, { margin: "-100px"});
-  const acquiaInView = useInView(acquiaRef, { margin: "-100px"});
-  const teamsoftInView = useInView(teamsoftRef, { margin: "-100px"});
+  const asicsInView = useInView(asicsRef, { margin: "-50px"});
+  // const asicsInView = useInView(asicsRef);
+  const entegralInView = useInView(entegralRef, { margin: "-50px"});
+  // const entegralInView = useInView(entegralRef);
+  const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
+  // const acquiaInView = useInView(acquiaRef);
+  const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
+  // const teamsoftInView = useInView(teamsoftRef);
 
   const [datePosition, setDatePosition] = useState(0);
+  const [isScrolledToTop, setIsScrolledToTop] = useState(true);
   const { scrollYProgress } = useScroll();
 
   const background = useTransform(
@@ -59,20 +63,42 @@ function App() {
 
   // let datePosition = 0;
 
-  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
-  //   console.log("Page scroll: ", latest)
-  // })
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log(latest);
+    if(isScrolledToTop && latest > 0.001) {
+      setIsScrolledToTop(false);
+    }
+    else if (!isScrolledToTop  && latest < 0.001) {
+      setIsScrolledToTop(true);
+    }
+  });
 
-  if(asicsInView && !acquiaInView && !teamsoftInView && !entegralInView && datePosition !== datePositions[0]) {
+  const isAsicsInView = () => {
+    return asicsInView && !acquiaInView && !teamsoftInView && !entegralInView;
+  }
+
+  const isEntegralInView = () => {
+    return entegralInView && !asicsInView && !acquiaInView && !teamsoftInView;
+  }
+
+  const isAcquiaInView = () => {
+    return acquiaInView && !asicsInView && !entegralInView && !teamsoftInView;
+  }
+
+  const isTeamSoftInView = () => {
+    return teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
+  }
+
+  if(isAsicsInView() && datePosition !== datePositions[0]) {
     setDatePosition(datePositions[0]);
   }
-  if(entegralInView && !asicsInView && !acquiaInView && !teamsoftInView && datePosition !== datePositions[1]) {
+  if(isEntegralInView() && datePosition !== datePositions[1]) {
     setDatePosition(datePositions[1]);
   }
-  else if(acquiaInView && !asicsInView && !entegralInView && !teamsoftInView && datePosition !== datePositions[2]) {
+  else if(isAcquiaInView() && datePosition !== datePositions[2]) {
     setDatePosition(datePositions[2]);
   }
-  else if(teamsoftInView && !asicsInView && !acquiaInView && !entegralInView && datePosition !== datePositions[3]) {
+  else if(isTeamSoftInView() && datePosition !== datePositions[3]) {
     setDatePosition(datePositions[3]);
   }
 
@@ -80,19 +106,20 @@ function App() {
     <>
       <GlobalStyles />
 
-      <motion.div style={{
-        position: "fixed",
-        top: 20,
-        left: 0,
-        right: 0,
-        height: 10,
-        originX: 0,
-      }}
-      >{scrollYProgress}</motion.div>
+      {/*<motion.div style={{*/}
+      {/*  position: "fixed",*/}
+      {/*  top: 20,*/}
+      {/*  left: 0,*/}
+      {/*  right: 0,*/}
+      {/*  height: 10,*/}
+      {/*  originX: 0,*/}
+      {/*}}*/}
+      {/*>{scrollYProgress}</motion.div>*/}
 
       <Header />
 
       <StyledMain style={{ background }}>
+        isScrolledToTop: {isScrolledToTop?'true':'false'};
         <SubHeader>
           {/*<div style={{color: 'white', fontSize: '1.4rem', padding: '150px 40px', flex: 1}}>*/}
           <SubHeaderLeft>
@@ -107,8 +134,10 @@ function App() {
               <motion.img
                 alt="jnoer"
                 src={Jnoer}
+                initial={{y: 186}} animate={{y: 0}} transition={{duration: 1, delay: 1}}
                 style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
-                whileHover={{ rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 }}
+                // whileHover={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
+                // whileTap={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
               />
             </ClipContainer>
             </AvatarImagesContainer>
@@ -118,7 +147,8 @@ function App() {
         <div style={{display: 'flex'}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '80px' }}>
-              <DateBracket style={{ right: 'px' }}>[</DateBracket>
+              {/*<DateBracket style={{ color: '#444444', right: '6px' }}>[</DateBracket>*/}
+              <DateBracket style={{ color: 'mediumaquamarine', right: '8px' }}>[</DateBracket>
               <YearDisplay id="year-display">
                 <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
                   <h2>2022 - 2025</h2>
@@ -127,33 +157,33 @@ function App() {
                   <h2>2007 - 2012</h2>
                 </motion.div>
               </YearDisplay>
-              <DateBracket style={{ left: '5px' }}>]</DateBracket>
+              <DateBracket style={{ color: 'mediumaquamarine', left: '5px' }}>]</DateBracket>
 
               <div>
-                {asicsInView && <AsicsDetails />}
-                {entegralInView && <EntegralDetails/>}
-                {acquiaInView && <AcquiaDetails/>}
-                {teamsoftInView && <TeamsoftDetails/>}
+                {isAsicsInView() && <AsicsDetails/>}
+                {isEntegralInView() && <EntegralDetails/>}
+                {isAcquiaInView() && <AcquiaDetails/>}
+                {isTeamSoftInView() && <TeamsoftDetails/>}
               </div>
             </div>
           </LeftSide>
 
           <RightSide>
-            <Section id="asics-section">
-              <CompanyImage alt="Asics" src={AsicsLogo} ref={asicsRef} style={{ margin: 'auto' }} />
-            </Section>
+            <CompanyImageContainer id="asics-section">
+              <CompanyImage alt="Asics" src={AsicsLogo} ref={asicsRef} style={{ margin: '0 auto 20px auto' }} />
+            </CompanyImageContainer>
 
-            <Section id="entegral-section">
+            <CompanyImageContainer id="entegral-section">
               <CompanyImage alt="Entegral" src={EntegralLogo} ref={entegralRef}/>
-            </Section>
+            </CompanyImageContainer>
 
-            <Section id="acquia-section">
-              <CompanyImage alt="Acquia" src={AcquiaLogo} ref={acquiaRef} />
-            </Section>
+            <CompanyImageContainer id="acquia-section">
+              <CompanyImage alt="Acquia" src={AcquiaLogo} ref={acquiaRef} style={{ margin: '0 auto 20px auto' }} />
+            </CompanyImageContainer>
 
-            <Section id="teamsoft-section" showLine={false} >
+            <CompanyImageContainer id="teamsoft-section" showLine={false} >
               <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} ref={teamsoftRef} style={{backgroundColor: 'white'}}/>
-            </Section>
+            </CompanyImageContainer>
           </RightSide>
         </div>
       </StyledMain>
@@ -194,9 +224,16 @@ const DateBracket = styled.span`
 `
 
 const CompanyImage = styled.img`
-    //position: relative;
     margin: auto;
-    width: 60%;
+    
+    @media ${device.mobile} {
+        width: 90%;
+    }
+    
+    @media ${device.desktop} {
+        width: 60%;
+    }
+    
 `
 
 const StyledMain = styled(motion.main)`
@@ -213,16 +250,16 @@ const StyledTeamsoftLogo = styled(CompanyImage)`
 
 const SubHeaderLeft = styled.div`
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
 
     @media ${device.mobile} {
-        padding: 50px 30px;
+        padding: 10px 30px 60px 30px;
         width: 100%;
     }
   
     @media ${device.desktop} {
-        padding: 150px 80px;
+        padding: 8% 80px;
         width: 50%;
     }
   `
@@ -234,6 +271,7 @@ const SubHeaderRight = styled.div`
       //height: 60vh;
       width: 100%;
   }
+    
   @media ${device.desktop} {
       height: 80vh;
       width: 50%;
@@ -277,4 +315,4 @@ const YearDisplay = styled.div`
   overflow: hidden;
 `
 
-export default React.memo(App);
+export default App;

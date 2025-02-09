@@ -10,9 +10,9 @@ const Header = () => {
     <StyledHeader>
       <TitleSection>
         <StyledH1
-          initial={{x: 0, y: '100vh', scale: 3}}
-          animate={{x: 0, y: '0vh', scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          initial={{x: 0, y: -100, scale: .5 }}
+          animate={{x: 0, y: 0, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.5, type: 'spring'}}
         >
           Jason Noer
         </StyledH1>
@@ -40,10 +40,10 @@ const Header = () => {
         </LinkContainer>
       </TitleSection>
 
-      <StyledH2 style={{marginTop: '15px'}}>
-        <span style={{ color: 'green', marginRight: '6px' }}>&#123;&#123;</span>
+      <StyledH2>
+        <span style={{ color: 'mediumaquamarine', marginRight: '6px' }}>&#123;&#123;</span>
           Full-stack software developer
-        <span style={{color: 'green', marginLeft: '6px'}}>&#125;&#125;</span>
+        <span style={{color: 'mediumaquamarine', marginLeft: '6px'}}>&#125;&#125;</span>
       </StyledH2>
     </StyledHeader>
   )
@@ -73,7 +73,7 @@ const StyledHeader = styled.header`
   height: 20vh;
   margin: auto;
   max-width: 1440px; 
-  padding: 20px 40px;
+  padding: 30px 40px;
 `
 
 const TitleSection = styled.div`
@@ -83,7 +83,7 @@ const TitleSection = styled.div`
 
 const StyledH1 = styled(motion.h1)`
   color: black;
-  flex: 1 1 0;
+  //flex: 1 1 0;
   letter-spacing: 3px;
     
   @media ${device.mobile} {

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import * as React from "react";
 import {ReactNode} from "react";
-import {device} from "../styles/styles.ts";
 
 interface Props {
   children?: ReactNode,
@@ -10,20 +9,16 @@ interface Props {
   showLine?: boolean,
 }
 
-const StyledSection = styled.div`
-    height: 100vh;
-    
-    @media ${device.desktop} {  
-        padding: 40px;
-    }
-  `
+const StyledContainer = styled.div`
+    height: 90vh;
+`
 
-const Section = ({ children, showLine = true, ...rest } : Props) => {
+const CompanyImageContainer = ({ children, showLine = true, ...rest } : Props) => {
   return (
-    <StyledSection {...rest}>
+    <StyledContainer {...rest}>
       {children}
       {showLine && <VerticalLine/>}
-    </StyledSection>
+    </StyledContainer>
   )
 }
 
@@ -36,4 +31,4 @@ const VerticalLine = styled.div`
     width: 6px;
 `
 
-export default React.memo(Section);
+export default CompanyImageContainer;
