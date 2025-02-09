@@ -58,7 +58,7 @@ function App() {
   const rotate = useTransform(
     scrollYProgress,
     [0, 0.2],
-    [0, -15],
+    [0, -20],
   )
 
   // let datePosition = 0;
@@ -122,7 +122,9 @@ function App() {
               <motion.img
                 alt="jnoer"
                 src={Jnoer}
-                initial={{y: 186}} animate={{y: 0}} transition={{duration: 1, delay: 1}}
+                initial={{y: 186}}
+                animate={{y: 0}}
+                transition={{duration: 1, delay: 1, }}
                 style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
                 // whileHover={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
                 // whileTap={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
@@ -134,8 +136,8 @@ function App() {
 
         <div style={{display: 'flex'}}>
           <LeftSide id="left-side">
-            <div id="sticky-div" style={{ position: 'sticky', top: '80px' }}>
-              <div style={{fontFamily: 'Helvetica'}}>
+            <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
+              <div style={{fontFamily: 'Helvetica', marginBottom: '30px'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
@@ -158,6 +160,9 @@ function App() {
           </LeftSide>
 
           <RightSide>
+
+            <div style={{height: '180px'}}/>
+
             <CompanyImageContainer id="asics-section">
               <CompanyImage alt="Asics" src={AsicsLogo} ref={asicsRef} style={{ margin: '0 auto 20px auto' }} />
             </CompanyImageContainer>

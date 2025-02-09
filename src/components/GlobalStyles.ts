@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 400;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      max-width: 100%;
+      overflow-x: hidden;
   }
   
   img, picture, video, canvas, svg {
