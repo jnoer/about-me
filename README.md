@@ -2,7 +2,7 @@
 
 <https://jasonnoer-resume.netlify.app/>
 
-![](https://github.com/jnoer/about-me/blob/main/website.png?raw=true)
+![](https://github.com/jnoer/about-me/blob/main/Screenshot.png?raw=true)
 
 Made with:
 

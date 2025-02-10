@@ -2,10 +2,11 @@ import Header from './Header'
 import CompanyImageContainer from "./CompanyImageContainer.tsx";
 import GlobalStyles from "./GlobalStyles.ts";
 import TeamsoftLogo from "../assets/teamsoft.png";
+import SpeechBubble from "../assets/speech-bubble.svg"
 import AcquiaLogo from "../assets/acquia-dam.webp";
 import EntegralLogo from "../assets/entegral.png";
 import AsicsLogo from "../assets/Asics.png";
-import DeveloperIcon from "../assets/developer.svg";
+import MonitorIcon from "../assets/developer.svg";
 import Jnoer from "../assets/jnoer.png";
 
 import styled from 'styled-components'
@@ -16,6 +17,7 @@ import TeamsoftDetails from "./TeamsoftDetails";
 import { motion, useInView, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
 import {useRef, useState} from 'react';
 import {device} from "../styles/styles.ts";
+import Footer from "./Footer.tsx";
 
 const datePositions = [0, 36, 72, 108]
 
@@ -25,16 +27,14 @@ function App() {
   const acquiaRef = useRef(null);
   const teamsoftRef = useRef(null);
   const asicsInView = useInView(asicsRef, { margin: "-50px"});
-  // const asicsInView = useInView(asicsRef);
   const entegralInView = useInView(entegralRef, { margin: "-50px"});
-  // const entegralInView = useInView(entegralRef);
   const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
-  // const acquiaInView = useInView(acquiaRef);
   const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
-  // const teamsoftInView = useInView(teamsoftRef);
 
   const [datePosition, setDatePosition] = useState(0);
   const [isScrolledToTop, setIsScrolledToTop] = useState(true);
+  const [isCoolMode, setCoolMode] = useState(false);
+  // const [anyCompaniesInView, setAnyCompaniesInView] = useState(false);
   const { scrollYProgress } = useScroll();
 
   const background = useTransform(
@@ -60,8 +60,6 @@ function App() {
     [0, 0.2],
     [0, -20],
   )
-
-  // let datePosition = 0;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if(isScrolledToTop && latest > 0.001) {
@@ -101,35 +99,72 @@ function App() {
     setDatePosition(datePositions[3]);
   }
 
+  const avatarBubble = (
+    <motion.div
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 1}}
+      style={{
+      position: 'absolute',
+      top: '20px',
+      left: '-100px',
+      width: '150px'}}
+    >
+      <div style={{
+        position: 'absolute',
+        top: '20px'}}
+      >
+        <span>translateY:</span>
+        <motion.span>
+          {translateY}
+        </motion.span>
+        <br />
+        <span>rotate:</span>
+        <motion.span>
+          {rotate}
+        </motion.span>
+      </div>
+      <img src={SpeechBubble} />
+    </motion.div>
+  )
+
+  // if(!anyCompaniesInView && (isAsicsInView() || isEntegralInView() || isTeamSoftInView() || isAcquiaInView())) {
+  //   setAnyCompaniesInView(true);
+  // }
+  // else if(anyCompaniesInView && (!isAsicsInView() && !isEntegralInView() && !isTeamSoftInView() && !isAcquiaInView())) {
+  //   setAnyCompaniesInView(false);
+  // }
+
   return (
     <>
       <GlobalStyles />
 
-      <Header />
+      <Header isCoolMode={isCoolMode} setCoolMode={setCoolMode} />
 
       <StyledMain style={{ background }}>
         <SubHeader>
-          {/*<div style={{color: 'white', fontSize: '1.4rem', padding: '150px 40px', flex: 1}}>*/}
           <SubHeaderLeft>
             A senior developer with years of full-stack experience. Skilled at designing and coding high-performance, high traffic web applications from back-end to front-end. Passionate about performance, security, search and UX.
           </SubHeaderLeft>
 
-          {/*<Monitor id="monitor" style={{ flex: 1 }}>*/}
           <SubHeaderRight id="monitor">
             <AvatarImagesContainer  id="avatar-images-container">
-            <CompanyImage alt="Developer" style={{color: 'white', margin: 'auto', width: '400px', minWidth: '400px'}} src={DeveloperIcon}/>
-            <ClipContainer id="clip-container">
-              <motion.img
-                alt="jnoer"
-                src={Jnoer}
-                initial={{y: 186}}
-                animate={{y: 0}}
-                transition={{duration: 1, delay: 1, }}
-                style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
-                // whileHover={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
-                // whileTap={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
-              />
-            </ClipContainer>
+              { isCoolMode && avatarBubble }
+
+              <CompanyImage alt="Monitor" style={{color: 'white', margin: 'auto', width: '400px', minWidth: '400px'}} src={MonitorIcon}/>
+
+              <ClipContainer id="clip-container">
+                <motion.img
+                  alt="jnoer"
+                  src={Jnoer}
+                  initial={{y: 186}}
+                  animate={{y: 0}}
+                  transition={{duration: 1, delay: 1, }}
+                  style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
+                  // whileHover={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
+                  // whileTap={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
+                />
+              </ClipContainer>
             </AvatarImagesContainer>
           </SubHeaderRight>
         </SubHeader>
@@ -137,6 +172,7 @@ function App() {
         <div style={{display: 'flex'}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
+              {/*<div style={{fontFamily: 'Helvetica', marginBottom: '30px', display: anyCompaniesInView ? 'initial' : 'none'}}>*/}
               <div style={{fontFamily: 'Helvetica', marginBottom: '30px'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
@@ -160,7 +196,6 @@ function App() {
           </LeftSide>
 
           <RightSide>
-
             <div style={{height: '180px'}}/>
 
             <CompanyImageContainer id="asics-section">
@@ -180,6 +215,19 @@ function App() {
             </CompanyImageContainer>
           </RightSide>
         </div>
+
+        <Footer />
+
+        { isCoolMode && (
+          <CoolModeBar
+            scrollYProgress={scrollYProgress}
+            background={background}
+            asicsInView={asicsInView}
+            datePosition={datePosition}
+            isScrolledToTop={isScrolledToTop}
+          />
+        )}
+
       </StyledMain>
     </>
   )
@@ -195,6 +243,36 @@ const SubHeader = styled.div`
   display: flex;
   max-width: 1440px;
 `
+
+const CoolModeBar = ({ background, scrollYProgress, asicsInView, datePosition, isScrolledToTop }) => {
+  return (
+    <motion.div
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 1}}
+      style={{
+        backgroundColor: 'white',
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0 }}
+    >
+      <span>scrollYProgress:</span>
+      <motion.span>
+        {scrollYProgress}
+      </motion.span>
+
+      <div>asicsInView: {asicsInView ? 'true' : 'false'}</div>
+      <div>datePosition: {datePosition}</div>
+      <div>isScrolledToTop: {isScrolledToTop  ? 'true' : 'false'}</div>
+
+      <span>background:</span>
+      <motion.span>
+        {background}
+      </motion.span>
+    </motion.div>
+)}
+
 const AvatarImagesContainer = styled.div`
   position:relative;
   width:400px;

@@ -5,7 +5,15 @@ import { motion } from "motion/react";
 import * as React from "react";
 import {device} from "../styles/styles.ts";
 
-const Header = () => {
+// const smiley = <div>☺️</div>;
+const smiley = <div>🤓</div>;
+const cool = <div>😎</div>
+
+const Header = ({ isCoolMode, setCoolMode }) => {
+  const onCoolModeClick = () => {
+    setCoolMode(!isCoolMode);
+  }
+
   return (
     <StyledHeader>
       <TitleSection>
@@ -37,6 +45,13 @@ const Header = () => {
               whileTap={{ scale: 0.9 }}
             />
           </a>
+
+          <StyledCoolModeButton
+            onClick={onCoolModeClick}
+            whileHover={{ scale: 1.3, rotate: 180 }}
+          >
+            {isCoolMode ? cool : smiley }
+          </StyledCoolModeButton>
         </LinkContainer>
       </TitleSection>
 
@@ -48,6 +63,23 @@ const Header = () => {
     </StyledHeader>
   )
 }
+
+const StyledCoolModeButton = styled(motion.div)`
+    background: none;
+    border: none;
+    margin-top: -9px;
+    font-size: 42px;
+    padding: 0;
+    cursor: pointer;
+    
+    @media ${device.mobile} {
+        display:none;
+    }
+
+    @media ${device.desktop} {
+        display:block;
+    }
+`
 
 const LinkContainer = styled.div`
     display:flex;

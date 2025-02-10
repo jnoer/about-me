@@ -26,7 +26,7 @@ const VerticalLine = styled.div`
     height: 70%;
     left: 50%;
     position: relative;
-    border-left: 6px dotted grey;
+    border-left: 6px dotted rgba(144, 238, 144, 0.44);
     top: 20px;
     width: 6px;
 `

@@ -10,7 +10,6 @@ const TechImage = ({ ...delegated }) => {
 
 const StyledTechImage = styled(motion.img)`
   height: 42px;
-  width: 42px;
   display: inline-block;
   margin-right: 6px;
 `
