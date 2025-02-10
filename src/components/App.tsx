@@ -17,8 +17,8 @@ import { motion, useInView, useMotionValueEvent, useScroll, useTransform } from 
 import {useRef, useState} from 'react';
 import {device, maxWidth} from "../styles/styles.ts";
 import Footer from "./Footer.tsx";
-import AvatarBubble from "../assets/AvatarBubble.tsx";
-import DatesBubble from "../assets/DatesBubble.tsx";
+import AvatarBubble from "../AvatarBubble.tsx";
+import DatesBubble from "../DatesBubble.tsx";
 import CoolModeBar from "./CoolModeBar.tsx";
 
 const datePositions = [0, 36, 72, 108]
@@ -231,7 +231,7 @@ const ClipContainer = styled.div`
 `
 
 const DateBracket = styled.h2`
-    font-family: 'SansSerif, Roboto Thin';
+    font-family: SansSerif, 'Roboto Thin';
     font-size: 34px;
     font-weight: 700;
   color: dodgerblue;

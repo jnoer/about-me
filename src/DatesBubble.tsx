@@ -1,5 +1,5 @@
 import {motion} from "motion/react";
-import SpeechBubble from "./speech-bubble.svg";
+import SpeechBubble from "./assets/speech-bubble.svg";
 
 interface PropTypes {
   datePosition: any;

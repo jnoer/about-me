@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <div style={{alignSelf: 'center', justifySelf: 'center'}}>
-      <h2>This site made with</h2>
+      <h2>This site made with ☕️ and . . .</h2>
       <div>
         <TechImage src={icons.ReactIcon}></TechImage>
         <TechImage src={ViteIcon}></TechImage>

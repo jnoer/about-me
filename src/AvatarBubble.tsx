@@ -1,5 +1,5 @@
 import {motion} from "motion/react";
-import SpeechBubble from "./speech-bubble.svg";
+import SpeechBubble from "./assets/speech-bubble.svg";
 
 interface PropTypes {
   translateY: any;
@@ -25,7 +25,7 @@ const AvatarBubble = ({ translateY, rotate } : PropTypes) => {
         padding: 3,
         position: 'absolute',
         left: 10,
-        top: 20}}
+        top: 29}}
       >
         <span>translateY:</span>
         <motion.span>
