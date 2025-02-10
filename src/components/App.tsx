@@ -15,7 +15,7 @@ import AcquiaDetails from "./AcquiaDetails";
 import TeamsoftDetails from "./TeamsoftDetails";
 import { motion, useInView, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
 import {useRef, useState} from 'react';
-import {device} from "../styles/styles.ts";
+import {device, maxWidth} from "../styles/styles.ts";
 import Footer from "./Footer.tsx";
 import AvatarBubble from "../assets/AvatarBubble.tsx";
 import DatesBubble from "../assets/DatesBubble.tsx";
@@ -140,7 +140,7 @@ function App() {
           </SubHeaderRight>
         </SubHeader>
 
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
               <div style={{fontFamily: 'Helvetica', marginBottom: '30px'}}>
@@ -253,6 +253,7 @@ const CompanyImage = styled.img`
 `
 
 const StyledMain = styled(motion.main)`
+    align-items: center;
   background-color: white;
   display: flex;
   flex-direction: column;
