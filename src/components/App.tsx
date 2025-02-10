@@ -253,7 +253,7 @@ const CompanyImage = styled.img`
 `
 
 const StyledMain = styled(motion.main)`
-    align-items: center;
+  align-items: center;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -271,13 +271,13 @@ const SubHeaderLeft = styled.div`
   font-weight: 500;
 
   @media ${device.mobile} {
-      padding: 10px 30px 60px 30px;
-      width: 100%;
+    padding: 10px 30px 60px 30px;
+    width: 100%;
   }
 
   @media ${device.desktop} {
-      padding: 8% 80px;
-      width: 50%;
+    padding: 8% 80px;
+    width: 50%;
   }
 `
 
@@ -285,7 +285,6 @@ const SubHeaderRight = styled.div`
   color: white;
     
   @media ${device.mobile} {
-      //height: 60vh;
       width: 100%;
   }
     
@@ -298,36 +297,34 @@ const SubHeaderRight = styled.div`
 
 const LeftSide = styled.div`
   color: black;
-  //flex: 1;
-
     
-    @media ${device.mobile} {
-        padding: 0 20px;
-        width: 100%;
-    }
+  @media ${device.mobile} {
+      padding: 0 20px;
+      width: 100%;
+  }
 
-    @media ${device.desktop} {
-        padding: 0 40px 0 80px;
-        width: 60%;
-    }
+  @media ${device.desktop} {
+      padding: 0 40px 0 80px;
+      width: 60%;
+  }
 `
 
 
 const RightSide = styled.div`
-    @media ${device.mobile} {
-    visibility: hidden;
-        width: 0;
+  @media ${device.mobile} {
+    visibility: hidden;  
+    width: 0;
   }
 
-    @media ${device.mobile} {
-        visibility: visible;
-        width: 40%;
-    }
+  @media ${device.mobile} {
+    visibility: visible;
+    width: 40%;
+  }
 `
 
 const YearDisplay = styled.div`
-    color: var(--color-primary);
-    display: inline-block;
+  color: var(--color-primary);
+  display: inline-block;
   height: 36px;
   overflow: hidden;
 `

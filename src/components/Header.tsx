@@ -60,14 +60,24 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
         </LinkContainer>
       </TitleSection>
 
-      <StyledH2>
-        <span style={{ color: 'mediumaquamarine', marginRight: '6px' }}>&#123;&#123;</span>
-          Full-stack software developer
-        <span style={{color: 'mediumaquamarine', marginLeft: '6px'}}>&#125;&#125;</span>
-      </StyledH2>
+      <StyledDescription>
+        <StyledH2 style={{ color: 'mediumaquamarine', marginRight: '6px' }}>&#123;&#123;</StyledH2>
+        <StyledH2>Full-stack software developer</StyledH2>
+        <StyledH2 style={{color: 'mediumaquamarine', marginLeft: '6px'}}>&#125;&#125;</StyledH2>
+      </StyledDescription>
     </StyledHeader>
   )
 }
+
+const StyledDescription = styled.div`
+    @media ${device.mobile} {
+        margin-top: 30px;
+    }
+
+    @media ${device.desktop} {
+        margin-top: 10px;
+    }
+`
 
 const StyledCoolModeButton = styled(motion.div)`
     background: none;
@@ -107,6 +117,14 @@ const StyledHeader = styled.header`
   margin: auto;
   max-width: ${maxWidth}; 
   padding: 30px 80px;
+
+  @media ${device.mobile} {
+      padding: 30px 30px;
+  }
+
+  @media ${device.desktop} {
+      padding: 30px 80px;
+  }
 `
 
 const TitleSection = styled.div`
@@ -130,6 +148,7 @@ const StyledH1 = styled(motion.h1)`
 
 const StyledH2 = styled.h2`
     color: #444444;
+    display: inline-block;
     
     @media ${device.mobile} {
         font-size: 16px;
