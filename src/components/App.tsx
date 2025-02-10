@@ -212,7 +212,7 @@ const SubHeader = styled.div`
       flex-direction: row;
   }
   display: flex;
-  max-width: 1440px;
+  max-width: ${maxWidth};
 `
 
 const AvatarImagesContainer = styled.div`

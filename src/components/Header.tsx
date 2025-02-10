@@ -2,7 +2,7 @@ import styled from "styled-components";
 import gitHubImage from "../assets/github-mark.svg";
 import mailIcon from "../assets/mail-icon.svg";
 import { motion } from "motion/react";
-import {device} from "../styles/styles.ts";
+import {device, maxWidth} from "../styles/styles.ts";
 import {Dispatch, SetStateAction} from "react";
 
 // const smiley = <div>☺️</div>;
@@ -105,8 +105,8 @@ const StyledHeader = styled.header`
   color: black;
   height: 20vh;
   margin: auto;
-  max-width: 1440px; 
-  padding: 30px 40px;
+  max-width: ${maxWidth}; 
+  padding: 30px 80px;
 `
 
 const TitleSection = styled.div`
