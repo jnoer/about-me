@@ -2,14 +2,19 @@ import styled from "styled-components";
 import gitHubImage from "../assets/github-mark.svg";
 import mailIcon from "../assets/mail-icon.svg";
 import { motion } from "motion/react";
-import * as React from "react";
 import {device} from "../styles/styles.ts";
+import {Dispatch, SetStateAction} from "react";
 
 // const smiley = <div>☺️</div>;
 const smiley = <div>🤓</div>;
 const cool = <div>😎</div>
 
-const Header = ({ isCoolMode, setCoolMode }) => {
+interface PropTypes {
+  isCoolMode: boolean;
+  setCoolMode:  Dispatch<SetStateAction<boolean>>;
+}
+
+const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
   const onCoolModeClick = () => {
     setCoolMode(!isCoolMode);
   }

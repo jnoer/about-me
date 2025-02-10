@@ -19,6 +19,7 @@ import {device} from "../styles/styles.ts";
 import Footer from "./Footer.tsx";
 import AvatarBubble from "../assets/AvatarBubble.tsx";
 import DatesBubble from "../assets/DatesBubble.tsx";
+import CoolModeBar from "./CoolModeBar.tsx";
 
 const datePositions = [0, 36, 72, 108]
 
@@ -194,7 +195,6 @@ function App() {
             scrollYProgress={scrollYProgress}
             background={background}
             asicsInView={asicsInView}
-            datePosition={datePosition}
             isScrolledToTop={isScrolledToTop}
           />
         )}
@@ -214,45 +214,6 @@ const SubHeader = styled.div`
   display: flex;
   max-width: 1440px;
 `
-
-const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop }) => {
-  return (
-    <motion.div
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      transition={{duration: 1}}
-      style={{
-        backgroundColor: 'white',
-        fontFamily: 'Courier New',
-
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0 }}
-    >
-      <div style={{
-          background: 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red)',
-          height: '10px',
-          width: '100%',
-        }}
-      />
-
-      <div style = {{ padding: '5px' }}>
-      <span>scrollYProgress:</span>
-      <motion.span>
-        {scrollYProgress}
-      </motion.span>
-
-      <div>asicsInView: {asicsInView ? 'true' : 'false'}</div>
-      <div>isScrolledToTop: {isScrolledToTop  ? 'true' : 'false'}</div>
-
-      <span>background:</span>
-      <motion.span>
-        {background}
-      </motion.span>
-      </div>
-    </motion.div>
-)}
 
 const AvatarImagesContainer = styled.div`
   position:relative;

@@ -1,7 +1,12 @@
 import {motion} from "motion/react";
 import SpeechBubble from "./speech-bubble.svg";
 
-const AvatarBubble = ({ translateY, rotate }) => {
+interface PropTypes {
+  translateY: any;
+  rotate: any;
+}
+
+const AvatarBubble = ({ translateY, rotate } : PropTypes) => {
   return (
     <motion.div
       initial={{opacity: 0}}

@@ -1,7 +1,11 @@
 import {motion} from "motion/react";
 import SpeechBubble from "./speech-bubble.svg";
 
-const DatesBubble = ({ datePosition }) => {
+interface PropTypes {
+  datePosition: any;
+}
+
+const DatesBubble = ({ datePosition }: PropTypes) => {
   return (
     <motion.div
       initial={{opacity: 0}}
