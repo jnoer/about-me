@@ -15,10 +15,13 @@ const EntegralDetails = () => {
       <div style={{marginTop: '30px'}}>
         <TechImage src={icons.TypeScriptIcon}/>
         <TechImage src={icons.AngularIcon}/>
+        <TechImage src={icons.JestIcon}/>
         <TechImage src={icons.NGXSIcon}/>
         <TechImage src={icons.JavaIcon}/>
+        <TechImage src={icons.HibernateIcon}/>
         <TechImage src={icons.SpringIcon}/>
         <TechImage src={icons.GCPIcon}/>
+        <TechImage src={icons.Docker}/>
         <TechImage src={icons.KubernetesIcon}/>
         <TechImage src={icons.MySQLIcon}/>
         <TechImage src={icons.CypressIcon}/>

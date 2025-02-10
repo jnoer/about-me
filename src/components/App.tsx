@@ -2,7 +2,6 @@ import Header from './Header'
 import CompanyImageContainer from "./CompanyImageContainer.tsx";
 import GlobalStyles from "./GlobalStyles.ts";
 import TeamsoftLogo from "../assets/teamsoft.png";
-import SpeechBubble from "../assets/speech-bubble.svg"
 import AcquiaLogo from "../assets/acquia-dam.webp";
 import EntegralLogo from "../assets/entegral.png";
 import AsicsLogo from "../assets/Asics.png";
@@ -18,6 +17,8 @@ import { motion, useInView, useMotionValueEvent, useScroll, useTransform } from 
 import {useRef, useState} from 'react';
 import {device} from "../styles/styles.ts";
 import Footer from "./Footer.tsx";
+import AvatarBubble from "../assets/AvatarBubble.tsx";
+import DatesBubble from "../assets/DatesBubble.tsx";
 
 const datePositions = [0, 36, 72, 108]
 
@@ -99,35 +100,6 @@ function App() {
     setDatePosition(datePositions[3]);
   }
 
-  const avatarBubble = (
-    <motion.div
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      transition={{duration: 1}}
-      style={{
-      position: 'absolute',
-      top: '20px',
-      left: '-100px',
-      width: '150px'}}
-    >
-      <div style={{
-        position: 'absolute',
-        top: '20px'}}
-      >
-        <span>translateY:</span>
-        <motion.span>
-          {translateY}
-        </motion.span>
-        <br />
-        <span>rotate:</span>
-        <motion.span>
-          {rotate}
-        </motion.span>
-      </div>
-      <img src={SpeechBubble} />
-    </motion.div>
-  )
-
   // if(!anyCompaniesInView && (isAsicsInView() || isEntegralInView() || isTeamSoftInView() || isAcquiaInView())) {
   //   setAnyCompaniesInView(true);
   // }
@@ -149,7 +121,7 @@ function App() {
 
           <SubHeaderRight id="monitor">
             <AvatarImagesContainer  id="avatar-images-container">
-              { isCoolMode && avatarBubble }
+              { isCoolMode && <AvatarBubble translateY={translateY} rotate={rotate} /> }
 
               <CompanyImage alt="Monitor" style={{color: 'white', margin: 'auto', width: '400px', minWidth: '400px'}} src={MonitorIcon}/>
 
@@ -159,10 +131,8 @@ function App() {
                   src={Jnoer}
                   initial={{y: 186}}
                   animate={{y: 0}}
-                  transition={{duration: 1, delay: 1, }}
+                  transition={{duration: .75, delay: 1, }}
                   style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
-                  // whileHover={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
-                  // whileTap={isScrolledToTop ? { rotate: '-2.5deg', transformOrigin: '100% 100%', scale: 1.05 } : {}}
                 />
               </ClipContainer>
             </AvatarImagesContainer>
@@ -172,7 +142,6 @@ function App() {
         <div style={{display: 'flex'}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              {/*<div style={{fontFamily: 'Helvetica', marginBottom: '30px', display: anyCompaniesInView ? 'initial' : 'none'}}>*/}
               <div style={{fontFamily: 'Helvetica', marginBottom: '30px'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
@@ -185,6 +154,8 @@ function App() {
                 </YearDisplay>
                 <DateBracket style={{ left: '5px' }}>]</DateBracket>
               </div>
+
+              { isCoolMode && <DatesBubble datePosition={datePosition} /> }
 
               <div>
                 {isAsicsInView() && <AsicsDetails/>}
@@ -244,7 +215,7 @@ const SubHeader = styled.div`
   max-width: 1440px;
 `
 
-const CoolModeBar = ({ background, scrollYProgress, asicsInView, datePosition, isScrolledToTop }) => {
+const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop }) => {
   return (
     <motion.div
       initial={{opacity: 0}}
@@ -252,24 +223,34 @@ const CoolModeBar = ({ background, scrollYProgress, asicsInView, datePosition, i
       transition={{duration: 1}}
       style={{
         backgroundColor: 'white',
+        fontFamily: 'Courier New',
+
         position: 'fixed',
         bottom: 0,
         left: 0,
         right: 0 }}
     >
+      <div style={{
+          background: 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red)',
+          height: '10px',
+          width: '100%',
+        }}
+      />
+
+      <div style = {{ padding: '5px' }}>
       <span>scrollYProgress:</span>
       <motion.span>
         {scrollYProgress}
       </motion.span>
 
       <div>asicsInView: {asicsInView ? 'true' : 'false'}</div>
-      <div>datePosition: {datePosition}</div>
       <div>isScrolledToTop: {isScrolledToTop  ? 'true' : 'false'}</div>
 
       <span>background:</span>
       <motion.span>
         {background}
       </motion.span>
+      </div>
     </motion.div>
 )}
 
@@ -289,7 +270,7 @@ const ClipContainer = styled.div`
 `
 
 const DateBracket = styled.h2`
-    font-family: 'Roboto Thin';
+    font-family: 'SansSerif, Roboto Thin';
     font-size: 34px;
     font-weight: 700;
   color: dodgerblue;

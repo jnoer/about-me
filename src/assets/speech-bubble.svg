@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 71.015 71.015" xml:space="preserve">
-<g>
+<svg fill="#ffffff" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 71.015 71.015" xml:space="preserve">
+  <defs>
+    <linearGradient id="gradient">
+        <stop offset="0%" stop-color="rgba(255, 0, 0, 1)"/>
+      <stop offset="10%" stop-color="rgba(255, 154, 0, 1)"/>
+      <stop offset="20%" stop-color="rgba(208, 222, 33, 1)"/>
+      <stop offset="30%" stop-color="rgba(79, 220, 74, 1)"/>
+      <stop offset="40%" stop-color="rgba(63, 218, 216, 1)"/>
+      <stop offset="50%" stop-color="rgba(47, 201, 226, 1)"/>
+      <stop offset="60%" stop-color="rgba(28, 127, 238, 1)"/>
+      <stop offset="70%" stop-color="rgba(95, 21, 242, 1)"/>
+      <stop offset="80%" stop-color="rgba(186, 12, 248, 1)"/>
+      <stop offset="90%" stop-color="rgba(251, 7, 217, 1)"/>
+      <stop offset="100%" stop-color="rgba(255, 0, 0, 1)"/>
+    </linearGradient>
+</defs>
+<g fill="url(#gradient">
 	<path d="M13.223,67.768l0.022-15.913L0,51.729V3.247h71.015v48.5H36.446L13.223,67.768z M4,47.766l13.25,0.125l-0.016,12.251
 		l17.967-12.395h31.814v-40.5H4V47.766z"/>
 </g>

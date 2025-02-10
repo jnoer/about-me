@@ -115,7 +115,7 @@ const StyledH1 = styled(motion.h1)`
   letter-spacing: 3px;
     
   @media ${device.mobile} {
-      font-size: 24px;
+      font-size: 22px;
   }
 
   @media ${device.desktop} {
@@ -134,4 +134,4 @@ const StyledH2 = styled.h2`
     }
 `
 
-export default React.memo(Header);
+export default Header;

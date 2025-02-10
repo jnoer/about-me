@@ -21,6 +21,7 @@ import GCPIcon from "../assets/google-cloud.svg";
 import CypressIcon from "../assets/cypress.svg";
 import StrutsIcon from "../assets/struts.svg";
 import JUnit from "../assets/junit.png";
+import Docker from "../assets/docker.svg";
 
 const icons = {
   AWSIcon,
@@ -45,7 +46,8 @@ const icons = {
   NGXSIcon,
   GCPIcon,
   StrutsIcon,
-  JUnit
+  JUnit,
+  Docker,
 }
 
 export default icons;
