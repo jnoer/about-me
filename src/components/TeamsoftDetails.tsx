@@ -1,6 +1,7 @@
 import WorkDetails from "./WorkDetails.tsx";
 import TechImage from "./TechImage.tsx";
 import icons from "./icons.ts";
+import { motion } from "motion/react";
 
 const TeamsoftDetails = () => {
   return (
@@ -13,13 +14,18 @@ const TeamsoftDetails = () => {
         site. Mentored less experienced developers.
       </p>
 
-      <div style={{marginTop: '30px'}}>
+      <motion.div
+        style={{marginTop: '30px'}}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{duration: 1, delay: .75}}
+      >
         <TechImage src={icons.JavaIcon}/>
         <TechImage src={icons.SpringIcon}/>
         <TechImage src={icons.HibernateIcon}/>
         <TechImage src={icons.StrutsIcon}/>
         <TechImage src={icons.JUnit}/>
-      </div>
+      </motion.div>
     </WorkDetails>
   )
 }

@@ -1,6 +1,7 @@
 import WorkDetails from "./WorkDetails.tsx";
 import TechImage from "./TechImage.tsx";
 import icons from "./icons.ts";
+import { motion } from "motion/react";
 
 
 const EntegralDetails = () => {
@@ -12,7 +13,12 @@ const EntegralDetails = () => {
         assisting with design, coding, and troubleshooting.
       </p>
 
-      <div style={{marginTop: '30px'}}>
+      <motion.div
+        style={{marginTop: '30px'}}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{duration: 1, delay: .75}}
+      >
         <TechImage src={icons.TypeScriptIcon}/>
         <TechImage src={icons.AngularIcon}/>
         <TechImage src={icons.JestIcon}/>
@@ -25,7 +31,7 @@ const EntegralDetails = () => {
         <TechImage src={icons.KubernetesIcon}/>
         <TechImage src={icons.MySQLIcon}/>
         <TechImage src={icons.CypressIcon}/>
-      </div>
+      </motion.div>
     </WorkDetails>
   )
 }

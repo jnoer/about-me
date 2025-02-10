@@ -1,6 +1,7 @@
 import WorkDetails from "./WorkDetails.tsx";
 import TechImage from "./TechImage.tsx";
 import icons from "./icons.ts";
+import { motion } from "motion/react";
 
 const AsicsDetails = () => {
   return (
@@ -9,7 +10,12 @@ const AsicsDetails = () => {
       <br />
       <p>Reworked the UI, UX, and structure of  id.asics.com. Upgraded the UI component library and consuming applications to React 18. Transitioned component library and consuming applications from Stitches JSS library to Emotion. Implemented front end features of a Single Sign On solution including app-to-web and web-to-web. Implemented dynamic styling feature. Transitioned from Circle CI to Github Actions.</p>
 
-      <div style={{marginTop: '30px'}}>
+      <motion.div
+        style={{marginTop: '30px'}}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{duration: 1, delay: .75}}
+      >
         <TechImage src={icons.TypeScriptIcon}/>
         <TechImage src={icons.ReactIcon}/>
         <TechImage src={icons.EmotionIcon}/>
@@ -22,7 +28,7 @@ const AsicsDetails = () => {
         <TechImage src={icons.ChromaticIcon}/>
         <TechImage src={icons.CypressIcon}/>
         <TechImage src={icons.AWSIcon}/>
-      </div>
+      </motion.div>
     </WorkDetails>
   )
 }

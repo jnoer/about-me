@@ -12,7 +12,7 @@ const WorkDetails = ({ children, title } : Props) => {
   return (
     <>
     <Title initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .3}}>{title}</Title>
-    <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}>
+    <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1, delay: .5}}>
       {children}
     </Description>
     </>
