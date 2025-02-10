@@ -36,7 +36,7 @@ function App() {
   const [datePosition, setDatePosition] = useState(0);
   const [isScrolledToTop, setIsScrolledToTop] = useState(true);
   const [isCoolMode, setCoolMode] = useState(false);
-  // const [anyCompaniesInView, setAnyCompaniesInView] = useState(false);
+  const [anyCompaniesInView, setAnyCompaniesInView] = useState(false);
   const { scrollYProgress } = useScroll();
 
   const background = useTransform(
@@ -44,12 +44,6 @@ function App() {
     [0, 0.2],
     ['#0D158D', '#FFFFFF']
   );
-
-  // const opacity = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.2],
-  //   [1, 0]
-  // );
 
   const translateY = useTransform(
     scrollYProgress,
@@ -101,12 +95,13 @@ function App() {
     setDatePosition(datePositions[3]);
   }
 
-  // if(!anyCompaniesInView && (isAsicsInView() || isEntegralInView() || isTeamSoftInView() || isAcquiaInView())) {
-  //   setAnyCompaniesInView(true);
-  // }
-  // else if(anyCompaniesInView && (!isAsicsInView() && !isEntegralInView() && !isTeamSoftInView() && !isAcquiaInView())) {
-  //   setAnyCompaniesInView(false);
-  // }
+  if(!anyCompaniesInView && (isAsicsInView() || isEntegralInView() || isTeamSoftInView() || isAcquiaInView())) {
+    setAnyCompaniesInView(true);
+  }
+
+  else if(anyCompaniesInView && (!isAsicsInView() && !isEntegralInView() && !isTeamSoftInView() && !isAcquiaInView())) {
+    setAnyCompaniesInView(false);
+  }
 
   return (
     <>
@@ -143,7 +138,7 @@ function App() {
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              <div style={{fontFamily: 'Helvetica', marginBottom: '30px'}}>
+              <div style={{fontFamily: 'Helvetica', marginBottom: '30px', display: anyCompaniesInView ? 'initial' : 'none'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
@@ -323,7 +318,7 @@ const RightSide = styled.div`
 `
 
 const YearDisplay = styled.div`
-  color: var(--color-primary);
+  color: mediumaquamarine;
   display: inline-block;
   height: 36px;
   overflow: hidden;
