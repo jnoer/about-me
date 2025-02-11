@@ -16,17 +16,17 @@ const AcquiaDetails = () => {
         animate={{opacity: 1}}
         transition={{duration: 1, delay: .75}}
       >
-        <TechImage src={icons.ReactIcon}/>
-        <TechImage src={icons.AngularIcon}/>
-        <TechImage src={icons.JestIcon}/>
-        <TechImage src={icons.JavaIcon}/>
-        <TechImage src={icons.HibernateIcon}/>
-        <TechImage src={icons.SpringIcon}/>
-        <TechImage src={icons.ElasticSearchIcon}/>
-        <TechImage src={icons.AWSIcon}/>
-        <TechImage src={icons.Docker}/>
-        <TechImage src={icons.KubernetesIcon}/>
-        <TechImage src={icons.MySQLIcon}/>
+        <TechImage src={icons.react.icon} name={icons.react.name}/>
+        <TechImage src={icons.angular.icon} name={icons.angular.name}/>
+        <TechImage src={icons.jest.icon} name={icons.jest.name}/>
+        <TechImage src={icons.java.icon} name={icons.java.name}/>
+        <TechImage src={icons.hibernate.icon} name={icons.hibernate.name}/>
+        <TechImage src={icons.spring.icon} name={icons.spring.name}/>
+        <TechImage src={icons.elasticsearch.icon} name={icons.elasticsearch.name}/>
+        <TechImage src={icons.aws.icon} name={icons.aws.name}/>
+        <TechImage src={icons.docker.icon} name={icons.docker.name}/>
+        <TechImage src={icons.kubernetes.icon} name={icons.kubernetes.name}/>
+        <TechImage src={icons.mysql.icon} name={icons.mysql.name}/>
       </motion.div>
     </WorkDetails>
   )

@@ -20,11 +20,11 @@ const TeamsoftDetails = () => {
         animate={{opacity: 1}}
         transition={{duration: 1, delay: .75}}
       >
-        <TechImage src={icons.JavaIcon}/>
-        <TechImage src={icons.SpringIcon}/>
-        <TechImage src={icons.HibernateIcon}/>
-        <TechImage src={icons.StrutsIcon}/>
-        <TechImage src={icons.JUnit}/>
+        <TechImage src={icons.java.icon} name={icons.java.name}/>
+        <TechImage src={icons.spring.icon} name={icons.spring.name}/>
+        <TechImage src={icons.hibernate.icon} name={icons.hibernate.name}/>
+        <TechImage src={icons.struts.icon} name={icons.struts.name}/>
+        <TechImage src={icons.junit.icon} name={icons.junit.name}/>
       </motion.div>
     </WorkDetails>
   )

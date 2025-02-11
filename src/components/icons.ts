@@ -22,35 +22,10 @@ import CypressIcon from "../assets/cypress.svg";
 import StrutsIcon from "../assets/struts.svg";
 import JUnit from "../assets/junit.png";
 import Docker from "../assets/docker.svg";
-import Webstorm from "../assets/webstorm.svg";
-
-const icons = {
-  AWSIcon,
-  AngularIcon,
-  JavaIcon,
-  SpringIcon,
-  KubernetesIcon,
-  MySQLIcon,
-  HibernateIcon,
-  ElasticSearchIcon,
-  ReactIcon,
-  EmotionIcon,
-  ReduxIcon,
-  RHFIcon,
-  I18NextIcon,
-  TypeScriptIcon,
-  ChromaticIcon,
-  StorybookIcon,
-  JestIcon,
-  FigmaIcon,
-  CypressIcon,
-  NGXSIcon,
-  GCPIcon,
-  StrutsIcon,
-  JUnit,
-  Docker,
-  Webstorm,
-}
+import Vite from "../assets/vite.svg";
+import StyledIcon from "../assets/styled.png"
+import MotionIcon from "../assets/motion.svg"
+import WebstormIcon from "../assets/webstorm.svg"
 
 const Icons = {
   aws: { icon: AWSIcon, name: 'AWS' },
@@ -77,7 +52,10 @@ const Icons = {
   struts: { icon: StrutsIcon, name: 'Struts' },
   junit: { icon: JUnit, name: 'JUnit' },
   docker: { icon: Docker, name: 'Docker' },
-  webstorm: { icon: Webstorm, name: 'WebStorm' },
+  webstorm: { icon: WebstormIcon, name: 'WebStorm' },
+  vite: { icon: Vite, name: 'Vite' },
+  styled: { icon: StyledIcon, name: 'Styled Components' },
+  motion: { icon: MotionIcon, name: 'Motion' },
 }
 
 export default Icons;

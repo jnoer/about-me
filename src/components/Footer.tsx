@@ -1,9 +1,5 @@
 import TechImage from "./TechImage.tsx";
 import icons from "./icons.ts"
-import ViteIcon from "../assets/vite.svg"
-import StyledIcon from "../assets/styled.png"
-import MotionIcon from "../assets/motion.svg"
-import WebstormIcon from "../assets/webstorm.svg"
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
@@ -15,17 +11,21 @@ const StyledFooter = styled.footer`
     width:100%;
 `
 
-const Footer = () => {
+interface PropsType {
+  ref: React.RefObject<null>;
+}
+
+const Footer = ({ ref }: PropsType) => {
   return (
-    <StyledFooter>
+    <StyledFooter ref={ref}>
       <div style={{alignSelf: 'center', justifySelf: 'center'}}>
       <h2>This site made with ☕️ and . . .</h2>
-      <div>
-        <TechImage src={icons.react.icon}></TechImage>
-        <TechImage src={ViteIcon}></TechImage>
-        <TechImage src={StyledIcon}></TechImage>
-        <TechImage src={MotionIcon}></TechImage>
-        <TechImage src={WebstormIcon}></TechImage>
+      <div style={{marginTop: 10}}>
+        <TechImage src={icons.react.icon} name={icons.react.name}/>
+        <TechImage src={icons.vite.icon} name={icons.vite.name}/>
+        <TechImage src={icons.styled.icon} name={icons.styled.name}/>
+        <TechImage src={icons.motion.icon} name={icons.motion.name}/>
+        <TechImage src={icons.webstorm.icon} name={icons.webstorm.name}/>
       </div>
       </div>
     </StyledFooter>

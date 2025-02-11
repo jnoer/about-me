@@ -28,15 +28,17 @@ function App() {
   const entegralRef = useRef(null);
   const acquiaRef = useRef(null);
   const teamsoftRef = useRef(null);
+  const footerRef = useRef(null);
   const asicsInView = useInView(asicsRef, { margin: "-50px"});
   const entegralInView = useInView(entegralRef, { margin: "-50px"});
   const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
   const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
+  const footerInView = useInView(footerRef, { margin: "-50px"});
+
 
   const [datePosition, setDatePosition] = useState(0);
   const [isScrolledToTop, setIsScrolledToTop] = useState(true);
   const [isCoolMode, setCoolMode] = useState(false);
-  const [anyCompaniesInView, setAnyCompaniesInView] = useState(false);
   const { scrollYProgress } = useScroll();
 
   const background = useTransform(
@@ -95,14 +97,6 @@ function App() {
     setDatePosition(datePositions[3]);
   }
 
-  if(!anyCompaniesInView && (isAsicsInView() || isEntegralInView() || isTeamSoftInView() || isAcquiaInView())) {
-    setAnyCompaniesInView(true);
-  }
-
-  else if(anyCompaniesInView && (!isAsicsInView() && !isEntegralInView() && !isTeamSoftInView() && !isAcquiaInView())) {
-    setAnyCompaniesInView(false);
-  }
-
   return (
     <>
       <GlobalStyles />
@@ -138,9 +132,9 @@ function App() {
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              <div style={{fontFamily: 'Helvetica', marginBottom: '30px', display: anyCompaniesInView ? 'initial' : 'none'}}>
-                {/*<DateBracket style={{ right: '6px' }} animate={{ y: 0 }} initial={{y: -32}} transition={{ duration: 0.5 }}>[</DateBracket>*/}
-                <DateBracket style={{ right: '6px' }}>[</DateBracket>
+              <div style={{fontFamily: 'Helvetica', marginBottom: '30px', visibility: footerInView ? 'hidden' : 'visible'}}>
+                <DateBracket style={{ right: '6px' }} animate={{ y: 0 }} initial={{y: -32}} transition={{ duration: 0.5 }}>[</DateBracket>
+                {/*<DateBracket style={{ right: '6px' }}>[</DateBracket>*/}
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
                     <h2>2022 - 2025</h2>
@@ -184,7 +178,7 @@ function App() {
           </RightSide>
         </div>
 
-        <Footer />
+        <Footer ref={footerRef}/>
 
         { isCoolMode && (
           <CoolModeBar

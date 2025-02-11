@@ -5,12 +5,10 @@ const TechImage = ({ ...delegated }) => {
   const controls = useAnimationControls();
 
   const onMouseEnter = () => {
-    console.log("hover");
     controls.start('show');
   };
 
   const onMouseLeave = () => {
-    console.log("hover");
     controls.start('hide');
   };
 
@@ -38,44 +36,34 @@ const TechImage = ({ ...delegated }) => {
 // }
 
 return (
-  // <div style={{height: 82, width:82, border: '1px solid black', display: 'inline-block'}}>
   <motion.div
-    style={{border: '1px solid black', display: 'inline-block', position: 'relative'}}
+    style={{ display: 'inline-block', position: 'relative' }}
       animate={controls}
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
   >
     <StyledTechImage alt={delegated.name} whileHover={{scale: 1.3}} {...delegated} />
-    {/*<motion.span*/}
-    {/*  style={{opacity: 0, position: 'absolute'}}*/}
-    {/*  animate={controls}*/}
-    {/*  variants={{*/}
-    {/*    initial: {*/}
-    {/*      opacity: 0,*/}
-    {/*    },*/}
-    {/*    flip: {*/}
-    {/*      opacity: 1,*/}
-    {/*    },*/}
-    {/*  }}*/}
-    {/*>*/}
+
     <motion.div
-      style={{border: '1px solid red', position: 'absolute', opacity: 0}}
+      style={{ fontFamily: 'Courier New', fontWeight: 'bold', fontSize: '16px', position: 'absolute', marginTop: 8, scale: 0}}
         animate={controls}
         variants={{
           initial: {
-            opacity: 0,
+            // opacity: 0,
+            scale: 0,
           },
           show: {
-            opacity: 1,
+            // opacity: 1,
+            scale: 1,
           },
           hide: {
-            opacity: 0,
+            // opacity: 0,
+            scale: 0,
           },
         }}
     >
       {delegated.name}
     </motion.div>
-    {/*</motion.span>*/}
   </motion.div>
 );
 }
