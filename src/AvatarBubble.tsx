@@ -15,8 +15,8 @@ const AvatarBubble = ({ translateY, rotate } : PropTypes) => {
       style={{
         overflow: 'hidden',
         position: 'absolute',
-        top: '20px',
-        left: '-80px',
+        top: '-60px',
+        left: '-165px',
         width: '150px',
       }}
     >

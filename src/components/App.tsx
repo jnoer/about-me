@@ -278,9 +278,8 @@ const SubHeaderRight = styled.div`
   }
     
   @media ${device.desktop} {
-      height: 80vh;
-      width: 50%;
       padding: 40px;
+      width: 390px;
   }
 `
 
