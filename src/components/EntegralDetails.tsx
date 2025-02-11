@@ -1,11 +1,11 @@
-import {StyledTitle, WorkDetails} from "./WorkDetails.tsx";
+import {Title, WorkDetails} from "./WorkDetails.tsx";
 import TechImage from "./TechImage.tsx";
 import icons from "./icons.ts";
 import { motion } from "motion/react";
 
 const EntegralDetails = () => {
   return (
-    <WorkDetails title={<StyledTitle>Entegral</StyledTitle>}>
+    <WorkDetails title={<Title>Entegral</Title>}>
       <p>
         Influential software engineer on a full-stack team developing a modern, responsive web
         application that connects insurers and automakers. A key technical resource and mentor

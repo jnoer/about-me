@@ -3,23 +3,36 @@ import {ReactNode} from "react";
 import styled from "styled-components";
 import {device} from "../styles/styles.ts";
 
-interface Props {
+interface WorkDetailsProps {
   children?: ReactNode,
   title: ReactNode,
 }
 
-const WorkDetails = ({ children, title } : Props) => {
+interface TitleProps {
+  children?: ReactNode,
+  [x: string]: any;
+}
+
+const WorkDetails = ({ children, title } : WorkDetailsProps) => {
   return (
-    <>
+    <section>
       {title}
       <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1, delay: .3}}>
         {children}
       </Description>
-    </>
+    </section>
   )
 }
 
-const StyledTitle = styled.h1`
+const Title: React.FC<TitleProps> = ({ children, ...rest }: TitleProps) => {
+  return (
+    <StyledTitle initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} {...rest} >
+      {children}
+    </StyledTitle>
+  )
+}
+
+const StyledTitle = styled(motion.h1)`
     color: #444444;
     
     @media ${device.mobile} {
@@ -42,4 +55,4 @@ const Description = styled(motion.div)`
     }
 `
 
-export { StyledTitle, WorkDetails };
+export { Title, WorkDetails };

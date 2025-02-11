@@ -1,11 +1,11 @@
-import {StyledTitle, WorkDetails} from "./WorkDetails.tsx";
+import {Title, WorkDetails} from "./WorkDetails.tsx";
 import TechImage from "./TechImage.tsx";
 import icons from "./icons.ts";
 import { motion } from "motion/react";
 
 const TeamsoftDetails = () => {
   return (
-    <WorkDetails title={<StyledTitle>Teamsoft</StyledTitle>}>
+    <WorkDetails title={<Title>Teamsoft</Title>}>
       <p>
         As a software engineer, designed and developed web sites and web services and in a
         Linux environment, utilizing the open source technologies including JBoss, EJB, Struts,
