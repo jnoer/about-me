@@ -37,7 +37,7 @@ const Description = styled(motion.div)`
     }
 
     @media ${device.desktop} {
-        font-size: 24px;
+        font-size: 22px;
     }
 `
 

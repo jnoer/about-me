@@ -13,7 +13,7 @@ import AsicsDetails from "./AsicsDetails";
 import EntegralDetails from "./EntegralDetails";
 import AcquiaDetails from "./AcquiaDetails";
 import TeamsoftDetails from "./TeamsoftDetails";
-import { motion, useInView, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
+import {motion, useInView, useMotionValueEvent, useScroll, useTransform} from 'motion/react';
 import {useRef, useState} from 'react';
 import {device, maxWidth} from "../styles/styles.ts";
 import Footer from "./Footer.tsx";
@@ -34,7 +34,6 @@ function App() {
   const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
   const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
   const footerInView = useInView(footerRef, { margin: "-50px"});
-
 
   const [datePosition, setDatePosition] = useState(0);
   const [isScrolledToTop, setIsScrolledToTop] = useState(true);
@@ -113,7 +112,7 @@ function App() {
             <AvatarImagesContainer  id="avatar-images-container">
               { isCoolMode && <AvatarBubble translateY={translateY} rotate={rotate} /> }
 
-              <CompanyImage alt="Monitor" style={{color: 'white', margin: 'auto', width: '400px', minWidth: '400px'}} src={MonitorIcon}/>
+              <CompanyImage alt="Monitor" style={{color: 'white', margin: 'auto', width: '390px', minWidth: '390px'}} src={MonitorIcon}/>
 
               <ClipContainer id="clip-container">
                 <motion.img
@@ -122,7 +121,7 @@ function App() {
                   initial={{y: 186}}
                   animate={{y: 0}}
                   transition={{duration: .75, delay: 1, }}
-                  style={{ rotate, translateY, position: 'relative', margin: 'auto', top: '-1px', transformOrigin: '100% 100%'}}
+                  style={{ rotate, translateY, position: 'relative', margin: 'auto', transformOrigin: '100% 100%'}}
                 />
               </ClipContainer>
             </AvatarImagesContainer>
@@ -133,8 +132,7 @@ function App() {
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
               <div style={{fontFamily: 'Helvetica', marginBottom: '30px', visibility: footerInView ? 'hidden' : 'visible'}}>
-                <DateBracket style={{ right: '6px' }} animate={{ y: 0 }} initial={{y: -32}} transition={{ duration: 0.5 }}>[</DateBracket>
-                {/*<DateBracket style={{ right: '6px' }}>[</DateBracket>*/}
+                <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
                     <h2>2022 - 2025</h2>
@@ -202,28 +200,29 @@ const SubHeader = styled.div`
       flex-direction: row;
   }
   display: flex;
+  width: 100%;
   max-width: ${maxWidth};
 `
 
 const AvatarImagesContainer = styled.div`
   position:relative;
-  width:400px;
   margin:auto;
   display:flex;
   justify-content:center;
   align-items:center;
+  width: 100%;
 `
 
 const ClipContainer = styled.div`
   overflow: clip;
   position: absolute;
-  transform: translateY(-2px);
+  transform: translateY(-5px);
 `
 
 const DateBracket = styled(motion.h2)`
-    font-family: SansSerif, 'Roboto Thin';
-    font-size: 34px;
-    font-weight: 700;
+  font-family: SansSerif, 'Roboto Thin';
+  font-size: 34px;
+  font-weight: 700;
   color: dodgerblue;
   display: inline-block;
   position: relative;
@@ -290,25 +289,23 @@ const LeftSide = styled.div`
     
   @media ${device.mobile} {
       padding: 0 20px;
-      width: 100%;
+      width: 70%;
   }
 
   @media ${device.desktop} {
       padding: 0 40px 0 80px;
-      width: 60%;
+      width: 70%;
   }
 `
 
 
 const RightSide = styled.div`
   @media ${device.mobile} {
-    visibility: hidden;  
-    width: 0;
+      width: 30%;
   }
 
-  @media ${device.mobile} {
-    visibility: visible;
-    width: 40%;
+  @media ${device.desktop} {
+      width: 30%;
   }
 `
 
