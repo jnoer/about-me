@@ -5,21 +5,21 @@ import {device} from "../styles/styles.ts";
 
 interface Props {
   children?: ReactNode,
-  title: string,
+  title: ReactNode,
 }
 
 const WorkDetails = ({ children, title } : Props) => {
   return (
     <>
-    <Title initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: .3}}>{title}</Title>
-    <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1, delay: .3}}>
-      {children}
-    </Description>
+      {title}
+      <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1, delay: .3}}>
+        {children}
+      </Description>
     </>
   )
 }
 
-const Title = styled(motion.h1)`
+const StyledTitle = styled.h1`
     color: #444444;
     
     @media ${device.mobile} {
@@ -42,4 +42,4 @@ const Description = styled(motion.div)`
     }
 `
 
-export default WorkDetails;
+export { StyledTitle, WorkDetails };

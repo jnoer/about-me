@@ -310,7 +310,7 @@ const RightSide = styled.div`
 `
 
 const YearDisplay = styled.div`
-  color: mediumaquamarine;
+  color: royalblue;
   display: inline-block;
   height: 36px;
   overflow: hidden;
