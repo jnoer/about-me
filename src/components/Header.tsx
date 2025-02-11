@@ -70,13 +70,7 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
 }
 
 const StyledDescription = styled.div`
-    @media ${device.mobile} {
-        margin-top: 30px;
-    }
-
-    @media ${device.desktop} {
-        margin-top: 10px;
-    }
+  margin-top: 10px;
 `
 
 const StyledCoolModeButton = styled(motion.div)`
@@ -134,15 +128,16 @@ const TitleSection = styled.div`
 
 const StyledH1 = styled(motion.h1)`
   color: black;
-  flex: 1 1 0;
+  flex: 2 1 0;
+  font-family: 'Roboto Mono', 'Noto Sans', sans-serif;
   letter-spacing: 3px;
     
   @media ${device.mobile} {
-      font-size: 22px;
+      font-size: 26px;
   }
 
   @media ${device.desktop} {
-      font-size: 26px;
+      font-size: 34px;
   }
 `
 

@@ -44,7 +44,7 @@ const TechImage = ({ ...delegated }) => {
 }
 
 const StyledText = styled(motion.div)`
-  font-family: 'Courier New';
+  font-family: 'Roboto Mono';
   font-weight: bold;
   font-size: 16px;
   position: absolute;
