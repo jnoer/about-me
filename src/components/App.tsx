@@ -131,7 +131,7 @@ function App() {
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              <div style={{fontFamily: 'Helvetica', marginBottom: '30px', visibility: footerInView ? 'hidden' : 'visible'}}>
+              <DateContainer style={{visibility: footerInView ? 'hidden' : 'visible'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
@@ -142,7 +142,7 @@ function App() {
                   </motion.div>
                 </YearDisplay>
                 <DateBracket style={{ left: '5px' }}>]</DateBracket>
-              </div>
+              </DateContainer>
 
               { isCoolMode && <DatesBubble datePosition={datePosition} /> }
 
@@ -155,7 +155,7 @@ function App() {
             </div>
           </LeftSide>
 
-          <RightSide>
+          <RightSide id="right-side">
             <div style={{height: '180px'}}/>
 
             <CompanyImageContainer id="asics-section">
@@ -314,6 +314,15 @@ const YearDisplay = styled.div`
   display: inline-block;
   height: 36px;
   overflow: hidden;
+`
+
+const DateContainer = styled.div`
+    font-family: 'Helvetica';
+
+    @media ${device.desktop} {
+        margin-bottom: 30px
+    }
+    
 `
 
 export default App;
