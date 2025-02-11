@@ -22,6 +22,7 @@ import CypressIcon from "../assets/cypress.svg";
 import StrutsIcon from "../assets/struts.svg";
 import JUnit from "../assets/junit.png";
 import Docker from "../assets/docker.svg";
+import Webstorm from "../assets/webstorm.svg";
 
 const icons = {
   AWSIcon,
@@ -48,6 +49,35 @@ const icons = {
   StrutsIcon,
   JUnit,
   Docker,
+  Webstorm,
 }
 
-export default icons;
+const Icons = {
+  aws: { icon: AWSIcon, name: 'AWS' },
+  angular: { icon: AngularIcon,name: 'Angular' },
+  java: { icon: JavaIcon,name: 'Java' },
+  spring: { icon: SpringIcon, name: 'Spring' },
+  kubernetes: { icon: KubernetesIcon, name: 'Kubernetes' },
+  mysql: { icon: MySQLIcon, name: 'MySQL' },
+  hibernate: { icon: HibernateIcon, name: 'Hibernate' },
+  elasticsearch: { icon: ElasticSearchIcon, name: 'Elasticsearch' },
+  react: { icon: ReactIcon, name: 'React' },
+  emotion: { icon: EmotionIcon, name: 'Emotion' },
+  redux: { icon: ReduxIcon, name: 'Redux' },
+  rhf: { icon: RHFIcon, name: 'Rhf' },
+  i18next: { icon: I18NextIcon, name: 'i18next' },
+  typescript: { icon: TypeScriptIcon, name: 'Typescript' },
+  chromatic: { icon: ChromaticIcon, name: 'Chromatic' },
+  storybook: { icon: StorybookIcon, name: 'Storybook' },
+  jest: { icon: JestIcon, name: 'Jest' },
+  figma: { icon: FigmaIcon, name: 'Figma' },
+  cypress: { icon: CypressIcon, name: 'Cypress' },
+  ngxs: { icon: NGXSIcon, name: 'NGXS' },
+  gcp: { icon: GCPIcon, name: 'GCP' },
+  struts: { icon: StrutsIcon, name: 'Struts' },
+  junit: { icon: JUnit, name: 'JUnit' },
+  docker: { icon: Docker, name: 'Docker' },
+  webstorm: { icon: Webstorm, name: 'WebStorm' },
+}
+
+export default Icons;

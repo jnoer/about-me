@@ -1,6 +1,6 @@
 import WorkDetails from "./WorkDetails.tsx";
 import TechImage from "./TechImage.tsx";
-import icons from "./icons.ts";
+import Icons from "./icons.ts";
 import { motion } from "motion/react";
 
 const AsicsDetails = () => {
@@ -16,18 +16,18 @@ const AsicsDetails = () => {
         animate={{opacity: 1}}
         transition={{duration: 1, delay: .75}}
       >
-        <TechImage src={icons.TypeScriptIcon}/>
-        <TechImage src={icons.ReactIcon}/>
-        <TechImage src={icons.EmotionIcon}/>
-        <TechImage src={icons.ReduxIcon}/>
-        <TechImage src={icons.RHFIcon}/>
-        <TechImage src={icons.I18NextIcon}/>
-        <TechImage src={icons.JestIcon}/>
-        <TechImage src={icons.FigmaIcon}/>
-        <TechImage src={icons.StorybookIcon}/>
-        <TechImage src={icons.ChromaticIcon}/>
-        <TechImage src={icons.CypressIcon}/>
-        <TechImage src={icons.AWSIcon}/>
+        <TechImage src={Icons.typescript.icon} name={Icons.typescript.name}/>
+        <TechImage src={Icons.react.icon} name={Icons.react.name}/>
+        <TechImage src={Icons.emotion.icon} name={Icons.emotion.name}/>
+        <TechImage src={Icons.redux.icon} name={Icons.redux.name}/>
+        <TechImage src={Icons.rhf.icon} name={Icons.rhf.name}/>
+        <TechImage src={Icons.i18next.icon} name={Icons.i18next.name}/>
+        <TechImage src={Icons.jest.icon} name={Icons.jest.name}/>
+        <TechImage src={Icons.figma.icon} name={Icons.figma.name}/>
+        <TechImage src={Icons.storybook.icon} name={Icons.storybook.name}/>
+        <TechImage src={Icons.chromatic.icon} name={Icons.chromatic.name}/>
+        <TechImage src={Icons.cypress.icon} name={Icons.cypress.name}/>
+        <TechImage src={Icons.aws.icon} name={Icons.aws.name}/>
       </motion.div>
     </WorkDetails>
   )

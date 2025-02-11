@@ -139,6 +139,7 @@ function App() {
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
               <div style={{fontFamily: 'Helvetica', marginBottom: '30px', display: anyCompaniesInView ? 'initial' : 'none'}}>
+                {/*<DateBracket style={{ right: '6px' }} animate={{ y: 0 }} initial={{y: -32}} transition={{ duration: 0.5 }}>[</DateBracket>*/}
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
@@ -225,7 +226,7 @@ const ClipContainer = styled.div`
   transform: translateY(-2px);
 `
 
-const DateBracket = styled.h2`
+const DateBracket = styled(motion.h2)`
     font-family: SansSerif, 'Roboto Thin';
     font-size: 34px;
     font-weight: 700;
