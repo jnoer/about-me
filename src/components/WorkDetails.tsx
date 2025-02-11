@@ -34,6 +34,7 @@ const Title = styled(motion.h1)`
 const Description = styled(motion.div)`
     @media ${device.mobile} {
         font-size: 16px;
+        width: 120%;
     }
 
     @media ${device.desktop} {
