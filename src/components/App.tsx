@@ -5,6 +5,7 @@ import TeamsoftLogo from "../assets/teamsoft.png";
 import AcquiaLogo from "../assets/acquia-dam.webp";
 import EntegralLogo from "../assets/entegral.png";
 import AsicsLogo from "../assets/Asics.png";
+import UWWLogo from "../assets/uww-logo.png";
 import MonitorIcon from "../assets/developer.svg";
 import Jnoer from "../assets/jnoer.png";
 
@@ -20,6 +21,7 @@ import Footer from "./Footer.tsx";
 import AvatarBubble from "../AvatarBubble.tsx";
 import DatesBubble from "../DatesBubble.tsx";
 import CoolModeBar from "./CoolModeBar.tsx";
+import UwwDetails from "./UwwDetails.tsx";
 
 const datePositions = [0, 36, 72, 108]
 
@@ -28,11 +30,13 @@ function App() {
   const entegralRef = useRef(null);
   const acquiaRef = useRef(null);
   const teamsoftRef = useRef(null);
+  const uwwRef = useRef(null);
   const footerRef = useRef(null);
   const asicsInView = useInView(asicsRef, { margin: "-50px"});
   const entegralInView = useInView(entegralRef, { margin: "-50px"});
   const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
   const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
+  const uwwInView = useInView(uwwRef, { margin: "-50px"});
   const footerInView = useInView(footerRef, { margin: "-50px"});
 
   const [datePosition, setDatePosition] = useState(0);
@@ -83,6 +87,10 @@ function App() {
     return teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
   }
 
+  const isUwwInView = () => {
+    return  !teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
+  }
+
   if(isAsicsInView() && datePosition !== datePositions[0]) {
     setDatePosition(datePositions[0]);
   }
@@ -131,7 +139,7 @@ function App() {
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              <DateContainer style={{visibility: footerInView ? 'hidden' : 'visible'}}>
+              <DateContainer style={{visibility: footerInView || uwwInView ? 'hidden' : 'visible'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
@@ -151,6 +159,7 @@ function App() {
                 {isEntegralInView() && <EntegralDetails/>}
                 {isAcquiaInView() && <AcquiaDetails/>}
                 {isTeamSoftInView() && <TeamsoftDetails/>}
+                {isUwwInView() && <UwwDetails/>}
               </div>
             </div>
           </LeftSide>
@@ -170,8 +179,12 @@ function App() {
               <CompanyImage alt="Acquia" src={AcquiaLogo} ref={acquiaRef} style={{ margin: '0 auto 20px auto' }} />
             </CompanyImageContainer>
 
-            <CompanyImageContainer id="teamsoft-section" showLine={false} >
+            <CompanyImageContainer id="teamsoft-section" >
               <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} ref={teamsoftRef} style={{backgroundColor: 'white'}}/>
+            </CompanyImageContainer>
+
+            <CompanyImageContainer id="uww-section" showLine={false} >
+              <CompanyImage alt="UW Whitewater" src={UWWLogo} ref={uwwRef}/>
             </CompanyImageContainer>
           </RightSide>
         </div>
@@ -287,12 +300,12 @@ const LeftSide = styled.div`
   color: black;
     
   @media ${device.mobile} {
-      padding: 0 20px;
+      padding: 0 20px 40px 20px;
       width: 70%;
   }
 
   @media ${device.desktop} {
-      padding: 0 40px 0 80px;
+      padding: 0 40px 40px 80px;
       width: 70%;
   }
 `
