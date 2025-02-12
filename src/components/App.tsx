@@ -120,7 +120,11 @@ function App() {
             <AvatarImagesContainer  id="avatar-images-container">
               { isCoolMode && <AvatarBubble translateY={translateY} rotate={rotate} /> }
 
-              <CompanyImage alt="Monitor" style={{color: 'white', margin: 'auto', width: '390px', minWidth: '390px'}} src={MonitorIcon}/>
+              <img
+                alt="Monitor"
+                style={{ margin: 'auto', width: '390px', minWidth: '390px' }}
+                src={MonitorIcon}
+              />
 
               <ClipContainer id="clip-container">
                 <motion.img
@@ -285,6 +289,7 @@ const SubHeaderLeft = styled.div`
 
 const SubHeaderRight = styled.div`
   color: white;
+  margin: auto;
     
   @media ${device.mobile} {
       width: 100%;

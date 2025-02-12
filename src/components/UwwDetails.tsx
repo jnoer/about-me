@@ -15,6 +15,8 @@ const UwwDetails = () => {
 }
 
 const StyledUwwImage = styled.img`
+    filter: grayscale(1);
+    opacity: .5;
     margin-bottom: 40px;
     margin-top: 20px;
     width: 40%;

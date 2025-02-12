@@ -109,7 +109,7 @@ const StyledHeader = styled.header`
   color: black;
   height: 20vh;
   margin: auto;
-  max-width: ${maxWidth}; 
+  max-width: ${maxWidth};
   padding: 30px 80px;
 
   @media ${device.mobile} {
