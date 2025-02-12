@@ -88,7 +88,7 @@ function App() {
   }
 
   const isUwwInView = () => {
-    return  !teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
+    return  !isScrolledToTop && !teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
   }
 
   if(isAsicsInView() && datePosition !== datePositions[0]) {
@@ -139,7 +139,7 @@ function App() {
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              <DateContainer style={{visibility: footerInView || uwwInView ? 'hidden' : 'visible'}}>
+              <DateContainer style={{visibility: isScrolledToTop || footerInView || uwwInView ? 'hidden' : 'visible'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
