@@ -132,8 +132,8 @@ function App() {
                   src={Jnoer}
                   initial={{y: 186}}
                   animate={{y: 0}}
-                  transition={{duration: .75, delay: 1, }}
-                  style={{ rotate, translateY, position: 'relative', margin: 'auto', transformOrigin: '100% 100%'}}
+                  transition={{duration: .75, delay: 1}}
+                  style={{ rotate, translateY, position: 'relative', margin: 'auto', transformOrigin: '100% 100%' }}
                 />
               </ClipContainer>
             </AvatarImagesContainer>
@@ -146,7 +146,7 @@ function App() {
               <DateContainer style={{visibility: isScrolledToTop || footerInView || uwwInView ? 'hidden' : 'visible'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
-                  <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5 }}>
+                  <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5, type: 'spring' }}>
                     <h2>2022 - 2025</h2>
                     <h2>2021 - 2022</h2>
                     <h2>2012 - 2021</h2>
