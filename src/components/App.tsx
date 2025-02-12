@@ -104,6 +104,8 @@ function App() {
     setDatePosition(datePositions[3]);
   }
 
+  const hideDates = isScrolledToTop || footerInView || uwwInView;
+
   return (
     <>
       <GlobalStyles />
@@ -143,7 +145,7 @@ function App() {
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
             <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
-              <DateContainer style={{visibility: isScrolledToTop || footerInView || uwwInView ? 'hidden' : 'visible'}}>
+              <DateContainer style={{visibility: hideDates ? 'hidden' : 'visible'}}>
                 <DateBracket style={{ right: '6px' }}>[</DateBracket>
                 <YearDisplay id="year-display">
                   <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5, type: 'spring' }}>
@@ -156,7 +158,7 @@ function App() {
                 <DateBracket style={{ left: '5px' }}>]</DateBracket>
               </DateContainer>
 
-              { isCoolMode && <DatesBubble datePosition={datePosition} /> }
+              { !hideDates && isCoolMode && <DatesBubble datePosition={datePosition} /> }
 
               <div>
                 {isAsicsInView() && <AsicsDetails/>}
