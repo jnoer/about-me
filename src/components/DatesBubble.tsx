@@ -1,5 +1,5 @@
 import {motion} from "motion/react";
-import SpeechBubble from "./assets/speech-bubble.svg";
+import SpeechBubble from "../assets/speech-bubble.svg";
 
 interface PropTypes {
   datePosition: any;
@@ -21,7 +21,8 @@ const DatesBubble = ({ datePosition }: PropTypes) => {
       }}
     >
       <div style={{
-        fontFamily: 'Courier New',
+        fontFamily: 'Roboto Mono',
+        fontSize: '14px',
         padding: 10,
         position: 'absolute',
         left: 3,

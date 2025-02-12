@@ -18,8 +18,8 @@ import {motion, useInView, useMotionValueEvent, useScroll, useTransform} from 'm
 import {useRef, useState} from 'react';
 import {device, maxWidth} from "../styles/styles.ts";
 import Footer from "./Footer.tsx";
-import AvatarBubble from "../AvatarBubble.tsx";
-import DatesBubble from "../DatesBubble.tsx";
+import AvatarBubble from "./AvatarBubble.tsx";
+import DatesBubble from "./DatesBubble.tsx";
 import CoolModeBar from "./CoolModeBar.tsx";
 import UwwDetails from "./UwwDetails.tsx";
 

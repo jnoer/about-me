@@ -15,8 +15,7 @@ const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop
       transition={{duration: 1}}
       style={{
         backgroundColor: 'white',
-        fontFamily: 'Courier New',
-
+        fontFamily: 'Roboto Mono',
         position: 'fixed',
         bottom: 0,
         left: 0,
