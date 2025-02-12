@@ -13,35 +13,20 @@ interface TitleProps {
   [x: string]: any;
 }
 
-const delayContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delayChildren: .5
-    }
-  }
-}
-
-const delayChild = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 }
-}
-
 const WorkDetails = ({ children, title } : WorkDetailsProps) => {
   return (
-    <motion.div variants={delayContainer} initial="hidden" animate="show">
+    <section>
       {title}
-      <Description variants={delayChild}>
+      <Description initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1, delay: .3}}>
         {children}
       </Description>
-    </motion.div>
+    </section>
   )
 }
 
 const Title: React.FC<TitleProps> = ({ children, ...rest }: TitleProps) => {
   return (
-    <StyledTitle {...rest} >
+    <StyledTitle initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} {...rest} >
       {children}
     </StyledTitle>
   )
