@@ -31,9 +31,11 @@ const TechImage = ({ ...delegated }) => {
             },
             show: {
               scale: 1,
+              zIndex: 2,
             },
             hide: {
               scale: 0,
+              zIndex: 'auto',
             },
           }}
       >
@@ -44,6 +46,7 @@ const TechImage = ({ ...delegated }) => {
 }
 
 const StyledText = styled(motion.div)`
+  background-color: white;
   font-family: 'Roboto Mono';
   font-weight: bold;
   font-size: 16px;

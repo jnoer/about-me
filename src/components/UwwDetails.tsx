@@ -19,7 +19,7 @@ const StyledUwwImage = styled.img`
     opacity: .5;
     margin-bottom: 40px;
     margin-top: 20px;
-    width: 40%;
+    width: 30%;
 `
 
 export default UwwDetails;
