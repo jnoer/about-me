@@ -41,6 +41,7 @@ const TechImage = ({ ...delegated }) => {
       variants={linkVariants}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onTouchStart={onMouseEnter}
     >
       <StyledTechImage alt={delegated.name} whileHover={{scale: 1.3}} {...delegated} />
 
@@ -69,6 +70,7 @@ const TechImage = ({ ...delegated }) => {
 
 const StyledText = styled(motion.div)`
   background-color: white;
+  border-radius: 5px;
   font-family: 'Roboto Mono';
   font-weight: bold;
   font-size: 16px;

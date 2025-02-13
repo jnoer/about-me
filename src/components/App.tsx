@@ -46,7 +46,7 @@ function App() {
 
   const background = useTransform(
     scrollYProgress,
-    [0, 0.2],
+    [0, 0.15],
     ['#0D158D', '#FFFFFF']
   );
 
@@ -60,7 +60,7 @@ function App() {
     scrollYProgress,
     [0, 0.2],
     [0, -20],
-  )
+  );
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if(isScrolledToTop && latest > 0.001) {
