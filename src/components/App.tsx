@@ -37,7 +37,7 @@ function App() {
   const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
   const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
   const uwwInView = useInView(uwwRef, { margin: "-50px"});
-  const footerInView = useInView(footerRef, { margin: "-50px"});
+  const footerInView = useInView(footerRef);
 
   const [datePosition, setDatePosition] = useState(0);
   const [isScrolledToTop, setIsScrolledToTop] = useState(true);
@@ -165,7 +165,7 @@ function App() {
                 {isEntegralInView() && <EntegralDetails/>}
                 {isAcquiaInView() && <AcquiaDetails/>}
                 {isTeamSoftInView() && <TeamsoftDetails/>}
-                {isUwwInView() && <UwwDetails/>}
+                {(isUwwInView() || footerInView) && <UwwDetails/>}
               </div>
             </div>
           </LeftSide>
