@@ -15,11 +15,12 @@ interface PropTypes {
 
 const containerVariants = {
   out: {
-    y: 0,
+    opacity: 0,
   },
   in: {
-    y: 0,
+    opacity: 1,
     transition: {
+      delayChildren: 2,
       staggerChildren: 0.1,
     },
   },
@@ -27,7 +28,7 @@ const containerVariants = {
 
 const linkVariants = {
   out: {
-    scale: .4,
+    scale: 0,
   },
   in: {
     scale: 1,
@@ -43,7 +44,7 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
     <StyledHeader>
       <TitleSection>
         <StyledH1
-          initial={{ opacity: 0 }}
+          initial={{ opacity: .3 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 5 }}
         >
