@@ -1,5 +1,5 @@
 import {Title, WorkDetails} from "./WorkDetails.tsx";
-import TechImage from "./TechImage.tsx";
+import TechImage, {containerVariants} from "./TechImage.tsx";
 import Icons from "./icons.ts";
 import { motion } from "motion/react";
 
@@ -12,9 +12,9 @@ const AsicsDetails = () => {
 
       <motion.div
         style={{marginTop: '30px'}}
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{duration: .5, delay: .5}}
+        variants={containerVariants}
+        initial="out"
+        animate="in"
       >
         <TechImage src={Icons.typescript.icon} name={Icons.typescript.name}/>
         <TechImage src={Icons.react.icon} name={Icons.react.name}/>

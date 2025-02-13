@@ -1,5 +1,5 @@
 import {Title, WorkDetails} from "./WorkDetails.tsx";
-import TechImage from "./TechImage.tsx";
+import TechImage, {containerVariants} from "./TechImage.tsx";
 import icons from "./icons.ts";
 import { motion } from "motion/react";
 
@@ -18,9 +18,9 @@ const EntegralDetails = () => {
 
       <motion.div
         style={{marginTop: '30px'}}
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{duration: .5, delay: .5}}
+        variants={containerVariants}
+        initial="out"
+        animate="in"
       >
         <TechImage src={icons.typescript.icon} name={icons.typescript.name}/>
         <TechImage src={icons.angular.icon} name={icons.angular.name}/>

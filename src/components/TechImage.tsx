@@ -2,6 +2,28 @@ import { motion, useAnimationControls } from "motion/react";
 import styled from "styled-components";
 import {device} from "../styles/styles.ts";
 
+export const containerVariants = {
+  out: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+    transition: {
+      delayChildren: .5,
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const linkVariants = {
+  out: {
+    scale: 0,
+  },
+  in: {
+    scale: 1,
+  },
+};
+
 const TechImage = ({ ...delegated }) => {
   const controls = useAnimationControls();
 
@@ -16,7 +38,7 @@ const TechImage = ({ ...delegated }) => {
   return (
     <motion.div
       style={{ display: 'inline-block', position: 'relative' }}
-      animate={controls}
+      variants={linkVariants}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

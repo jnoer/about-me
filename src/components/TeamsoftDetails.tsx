@@ -1,5 +1,5 @@
 import {Title, WorkDetails} from "./WorkDetails.tsx";
-import TechImage from "./TechImage.tsx";
+import TechImage, {containerVariants} from "./TechImage.tsx";
 import icons from "./icons.ts";
 import { motion } from "motion/react";
 
@@ -16,9 +16,9 @@ const TeamsoftDetails = () => {
 
       <motion.div
         style={{marginTop: '30px'}}
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{duration: .5, delay: .5}}
+        variants={containerVariants}
+        initial="out"
+        animate="in"
       >
         <TechImage src={icons.java.icon} name={icons.java.name}/>
         <TechImage src={icons.spring.icon} name={icons.spring.name}/>
