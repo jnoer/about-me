@@ -1,7 +1,7 @@
 import {Title, WorkDetails} from "./WorkDetails.tsx";
 import TechImage, {containerVariants} from "./TechImage.tsx";
 import icons from "./icons.ts";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 
 const EntegralDetails = () => {
   return (
@@ -11,9 +11,11 @@ const EntegralDetails = () => {
         application that connects insurers and automakers. A key technical resource and mentor
         assisting with design, coding, and troubleshooting.
       </p>
-      <br />
+      <br/>
       <p>
-        Quickly learned Angular and NGXS to make significant enhancements in revamping the application, modifying the layout and increasing the utilization of the NGXS store. Employed years of experience to assist team members with Angular, JavaScript, RxJS, Java, IntelliJ IDEA, Artifactory, Gradle, and other technologies.
+        Quickly learned Angular and NGXS to make significant enhancements in revamping the application, modifying the
+        layout and increasing the utilization of the NGXS store. Employed years of experience to assist team members
+        with Angular, JavaScript, RxJS, Java, IntelliJ IDEA, Artifactory, Gradle, and other technologies.
       </p>
 
       <motion.div

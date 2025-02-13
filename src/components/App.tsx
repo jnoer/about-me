@@ -32,17 +32,17 @@ function App() {
   const teamsoftRef = useRef(null);
   const uwwRef = useRef(null);
   const footerRef = useRef(null);
-  const asicsInView = useInView(asicsRef, { margin: "-50px"});
-  const entegralInView = useInView(entegralRef, { margin: "-50px"});
-  const acquiaInView = useInView(acquiaRef, { margin: "-50px"});
-  const teamsoftInView = useInView(teamsoftRef, { margin: "-50px"});
-  const uwwInView = useInView(uwwRef, { margin: "-50px"});
+  const asicsInView = useInView(asicsRef, {margin: "-50px"});
+  const entegralInView = useInView(entegralRef, {margin: "-50px"});
+  const acquiaInView = useInView(acquiaRef, {margin: "-50px"});
+  const teamsoftInView = useInView(teamsoftRef, {margin: "-50px"});
+  const uwwInView = useInView(uwwRef, {margin: "-50px"});
   const footerInView = useInView(footerRef);
 
   const [datePosition, setDatePosition] = useState(0);
   const [isScrolledToTop, setIsScrolledToTop] = useState(true);
   const [isCoolMode, setCoolMode] = useState(false);
-  const { scrollYProgress } = useScroll();
+  const {scrollYProgress} = useScroll();
 
   const background = useTransform(
     scrollYProgress,
@@ -63,10 +63,9 @@ function App() {
   );
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if(isScrolledToTop && latest > 0.001) {
+    if (isScrolledToTop && latest > 0.001) {
       setIsScrolledToTop(false);
-    }
-    else if (!isScrolledToTop  && latest < 0.001) {
+    } else if (!isScrolledToTop && latest < 0.001) {
       setIsScrolledToTop(true);
     }
   });
@@ -91,16 +90,14 @@ function App() {
     return uwwInView && !asicsInView && !teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
   }
 
-  if(isAsicsInView() && datePosition !== datePositions[0]) {
+  if (isAsicsInView() && datePosition !== datePositions[0]) {
     setDatePosition(datePositions[0]);
   }
-  if(isEntegralInView() && datePosition !== datePositions[1]) {
+  if (isEntegralInView() && datePosition !== datePositions[1]) {
     setDatePosition(datePositions[1]);
-  }
-  else if(isAcquiaInView() && datePosition !== datePositions[2]) {
+  } else if (isAcquiaInView() && datePosition !== datePositions[2]) {
     setDatePosition(datePositions[2]);
-  }
-  else if(isTeamSoftInView() && datePosition !== datePositions[3]) {
+  } else if (isTeamSoftInView() && datePosition !== datePositions[3]) {
     setDatePosition(datePositions[3]);
   }
 
@@ -108,23 +105,25 @@ function App() {
 
   return (
     <>
-      <GlobalStyles />
+      <GlobalStyles/>
 
-      <Header isCoolMode={isCoolMode} setCoolMode={setCoolMode} />
+      <Header isCoolMode={isCoolMode} setCoolMode={setCoolMode}/>
 
-      <StyledMain style={{ background }}>
+      <StyledMain style={{background}}>
         <SubHeader>
           <SubHeaderLeft>
-            A senior developer with years of full-stack experience. Skilled at designing and coding high-performance, high traffic web applications from back-end to front-end. Passionate about performance, security, search and UX.
+            A senior developer with years of full-stack experience. Skilled at designing and coding high-performance,
+            high traffic web applications from back-end to front-end. Passionate about performance, security, search and
+            UX.
           </SubHeaderLeft>
 
           <SubHeaderRight id="monitor">
-            <AvatarImagesContainer  id="avatar-images-container">
-              { isCoolMode && <AvatarBubble translateY={translateY} rotate={rotate} /> }
+            <AvatarImagesContainer id="avatar-images-container">
+              {isCoolMode && <AvatarBubble translateY={translateY} rotate={rotate}/>}
 
               <img
                 alt="Monitor"
-                style={{ margin: 'auto', width: '390px', minWidth: '390px' }}
+                style={{margin: 'auto', width: '390px', minWidth: '390px'}}
                 src={MonitorIcon}
               />
 
@@ -135,7 +134,7 @@ function App() {
                   initial={{y: 186}}
                   animate={{y: 0}}
                   transition={{duration: .75, delay: 1}}
-                  style={{ rotate, translateY, position: 'relative', margin: 'auto', transformOrigin: '100% 100%' }}
+                  style={{rotate, translateY, position: 'relative', margin: 'auto', transformOrigin: '100% 100%'}}
                 />
               </ClipContainer>
             </AvatarImagesContainer>
@@ -144,21 +143,21 @@ function App() {
 
         <div style={{display: 'flex', maxWidth}}>
           <LeftSide id="left-side">
-            <div id="sticky-div" style={{ position: 'sticky', top: '25px' }}>
+            <div id="sticky-div" style={{position: 'sticky', top: '25px'}}>
               <DateContainer style={{visibility: hideDates ? 'hidden' : 'visible'}}>
-                <DateBracket style={{ right: '6px' }}>[</DateBracket>
+                <DateBracket style={{right: '6px'}}>[</DateBracket>
                 <YearDisplay id="year-display">
-                  <motion.div animate={{ y: -datePosition }} transition={{ duration: 0.5, type: 'spring' }}>
+                  <motion.div animate={{y: -datePosition}} transition={{duration: 0.5, type: 'spring'}}>
                     <h2>2022 - 2025</h2>
                     <h2>2021 - 2022</h2>
                     <h2>2012 - 2021</h2>
                     <h2>2007 - 2012</h2>
                   </motion.div>
                 </YearDisplay>
-                <DateBracket style={{ left: '5px' }}>]</DateBracket>
+                <DateBracket style={{left: '5px'}}>]</DateBracket>
               </DateContainer>
 
-              { !hideDates && isCoolMode && <DatesBubble datePosition={datePosition} /> }
+              {!hideDates && isCoolMode && <DatesBubble datePosition={datePosition}/>}
 
               <div>
                 {isAsicsInView() && <AsicsDetails/>}
@@ -174,7 +173,7 @@ function App() {
             <div style={{height: '180px'}}/>
 
             <CompanyImageContainer id="asics-section">
-              <CompanyImage alt="Asics" src={AsicsLogo} ref={asicsRef} style={{ margin: '0 auto 20px auto' }} />
+              <CompanyImage alt="Asics" src={AsicsLogo} ref={asicsRef} style={{margin: '0 auto 20px auto'}}/>
             </CompanyImageContainer>
 
             <CompanyImageContainer id="entegral-section">
@@ -182,14 +181,15 @@ function App() {
             </CompanyImageContainer>
 
             <CompanyImageContainer id="acquia-section">
-              <CompanyImage alt="Acquia" src={AcquiaLogo} ref={acquiaRef} style={{ margin: '0 auto 20px auto' }} />
+              <CompanyImage alt="Acquia" src={AcquiaLogo} ref={acquiaRef} style={{margin: '0 auto 20px auto'}}/>
             </CompanyImageContainer>
 
-            <CompanyImageContainer id="teamsoft-section" >
-              <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} ref={teamsoftRef} style={{backgroundColor: 'white'}}/>
+            <CompanyImageContainer id="teamsoft-section">
+              <StyledTeamsoftLogo alt="Teamsoft" src={TeamsoftLogo} ref={teamsoftRef}
+                                  style={{backgroundColor: 'white'}}/>
             </CompanyImageContainer>
 
-            <CompanyImageContainer id="uww-section" showLine={false} >
+            <CompanyImageContainer id="uww-section" showLine={false}>
               <CompanyImage alt="UW Whitewater" src={UWWLogo} ref={uwwRef}/>
             </CompanyImageContainer>
           </RightSide>
@@ -197,7 +197,7 @@ function App() {
 
         <Footer ref={footerRef}/>
 
-        { isCoolMode && (
+        {isCoolMode && (
           <CoolModeBar
             scrollYProgress={scrollYProgress}
             background={background}
@@ -213,10 +213,10 @@ function App() {
 
 const SubHeader = styled.div`
   @media ${device.mobile} {
-      flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
   @media ${device.desktop} {
-      flex-direction: row;
+    flex-direction: row;
   }
   display: flex;
   width: 100%;
@@ -224,11 +224,11 @@ const SubHeader = styled.div`
 `
 
 const AvatarImagesContainer = styled.div`
-  position:relative;
-  margin:auto;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 `
 
@@ -250,13 +250,13 @@ const DateBracket = styled(motion.h2)`
 
 const CompanyImage = styled.img`
   margin: auto;
-  
+
   @media ${device.mobile} {
-      width: 90%;
+    width: 90%;
   }
-  
+
   @media ${device.desktop} {
-      width: 60%;
+    width: 60%;
   }
 `
 
@@ -292,39 +292,39 @@ const SubHeaderLeft = styled.div`
 const SubHeaderRight = styled.div`
   color: white;
   margin: auto;
-    
+
   @media ${device.mobile} {
-      width: 100%;
+    width: 100%;
   }
-    
+
   @media ${device.desktop} {
-      padding: 40px;
-      width: 390px;
+    padding: 40px;
+    width: 390px;
   }
 `
 
 const LeftSide = styled.div`
   color: black;
-    
+
   @media ${device.mobile} {
-      padding: 0 20px 40px 20px;
-      width: 70%;
+    padding: 0 20px 40px 20px;
+    width: 70%;
   }
 
   @media ${device.desktop} {
-      padding: 0 40px 40px 80px;
-      width: 70%;
+    padding: 0 40px 40px 80px;
+    width: 70%;
   }
 `
 
 
 const RightSide = styled.div`
   @media ${device.mobile} {
-      width: 30%;
+    width: 30%;
   }
 
   @media ${device.desktop} {
-      width: 30%;
+    width: 30%;
   }
 `
 
@@ -336,12 +336,12 @@ const YearDisplay = styled.div`
 `
 
 const DateContainer = styled.div`
-    font-family: 'Helvetica';
+  font-family: 'Helvetica';
 
-    @media ${device.desktop} {
-        margin-bottom: 30px
-    }
-    
+  @media ${device.desktop} {
+    margin-bottom: 30px
+  }
+
 `
 
 export default App;

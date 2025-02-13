@@ -5,7 +5,7 @@ interface PropTypes {
   datePosition: any;
 }
 
-const DatesBubble = ({ datePosition }: PropTypes) => {
+const DatesBubble = ({datePosition}: PropTypes) => {
   return (
     <motion.div
       initial={{opacity: 0}}
@@ -26,17 +26,19 @@ const DatesBubble = ({ datePosition }: PropTypes) => {
         padding: 10,
         position: 'absolute',
         left: 3,
-        top: 57}}
+        top: 57
+      }}
       >
         <div>datePosition:</div>
         <motion.span>
           {datePosition}
         </motion.span>
-        <br />
+        <br/>
       </div>
 
-      <img src={SpeechBubble} style={{transform: 'scale(1, -1)'}} />
+      <img src={SpeechBubble} style={{transform: 'scale(1, -1)'}}/>
     </motion.div>
-)}
+  )
+}
 
 export default DatesBubble;

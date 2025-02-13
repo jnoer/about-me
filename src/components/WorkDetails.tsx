@@ -10,10 +10,11 @@ interface WorkDetailsProps {
 
 interface TitleProps {
   children?: ReactNode,
+
   [x: string]: any;
 }
 
-const WorkDetails = ({ children, title } : WorkDetailsProps) => {
+const WorkDetails = ({children, title}: WorkDetailsProps) => {
   return (
     <section>
       {title}
@@ -24,7 +25,7 @@ const WorkDetails = ({ children, title } : WorkDetailsProps) => {
   )
 }
 
-const Title: React.FC<TitleProps> = ({ children, ...rest }: TitleProps) => {
+const Title: React.FC<TitleProps> = ({children, ...rest}: TitleProps) => {
   return (
     <StyledTitle initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} {...rest} >
       {children}
@@ -55,4 +56,4 @@ const Description = styled(motion.div)`
     }
 `
 
-export { Title, WorkDetails };
+export {Title, WorkDetails};

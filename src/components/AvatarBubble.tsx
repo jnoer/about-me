@@ -7,7 +7,7 @@ interface PropTypes {
   rotate: any;
 }
 
-const AvatarBubble = ({ translateY, rotate } : PropTypes) => {
+const AvatarBubble = ({translateY, rotate}: PropTypes) => {
   return (
     <Container
       initial={{opacity: 0}}
@@ -19,7 +19,7 @@ const AvatarBubble = ({ translateY, rotate } : PropTypes) => {
         <motion.span>
           {translateY}
         </motion.span>
-        <br />
+        <br/>
         <span>rotate:</span>
         <motion.span>
           {rotate}
@@ -28,7 +28,8 @@ const AvatarBubble = ({ translateY, rotate } : PropTypes) => {
 
       <img src={SpeechBubble} style={{transform: 'scale(-1, 1)'}}/>
     </Container>
-)}
+  )
+}
 
 const Container = styled(motion.div)`
   overflow: hidden;

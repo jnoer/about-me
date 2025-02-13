@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import gitHubImage from "../assets/github-mark.svg";
 import mailIcon from "../assets/mail-icon.svg";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 import {device, maxWidth} from "../styles/styles.ts";
 import {Dispatch, SetStateAction} from "react";
 
@@ -10,7 +10,7 @@ const cool = <div>😎</div>
 
 interface PropTypes {
   isCoolMode: boolean;
-  setCoolMode:  Dispatch<SetStateAction<boolean>>;
+  setCoolMode: Dispatch<SetStateAction<boolean>>;
 }
 
 const containerVariants = {
@@ -35,7 +35,7 @@ const linkVariants = {
   },
 };
 
-const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
+const Header = ({isCoolMode, setCoolMode}: PropTypes) => {
   const onCoolModeClick = () => {
     setCoolMode(!isCoolMode);
   }
@@ -44,9 +44,9 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
     <StyledHeader>
       <TitleSection>
         <StyledH1
-          initial={{ opacity: .3 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 5 }}
+          initial={{opacity: .3}}
+          animate={{opacity: 1}}
+          transition={{duration: 5}}
         >
           Jason Noer
         </StyledH1>
@@ -57,8 +57,8 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
               alt="GitHub"
               src={gitHubImage}
               style={{height: '40px'}}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{scale: 1.2}}
+              whileTap={{scale: 0.9}}
             />
           </motion.a>
 
@@ -67,23 +67,23 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
               alt="email"
               src={mailIcon}
               style={{width: '50px', marginTop: '-3px'}}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{scale: 1.2}}
+              whileTap={{scale: 0.9}}
             />
           </motion.a>
 
           <StyledCoolModeButton
             onClick={onCoolModeClick}
-            whileHover={{ scale: 1.3, rotate: 180 }}
+            whileHover={{scale: 1.3, rotate: 180}}
             variants={linkVariants}
           >
-            {isCoolMode ? cool : smiley }
+            {isCoolMode ? cool : smiley}
           </StyledCoolModeButton>
         </LinkContainer>
       </TitleSection>
 
       <StyledDescription>
-        <StyledH2 style={{ color: 'mediumaquamarine', marginRight: '6px' }}>&#123;&#123;</StyledH2>
+        <StyledH2 style={{color: 'mediumaquamarine', marginRight: '6px'}}>&#123;&#123;</StyledH2>
         <StyledH2>Full-stack software developer</StyledH2>
         <StyledH2 style={{color: 'mediumaquamarine', marginLeft: '6px'}}>&#125;&#125;</StyledH2>
       </StyledDescription>
@@ -96,34 +96,34 @@ const StyledDescription = styled.div`
 `
 
 const StyledCoolModeButton = styled(motion.div)`
-    background: none;
-    border: none;
-    margin-top: -9px;
-    font-size: 42px;
-    padding: 0;
-    cursor: pointer;
-    
-    @media ${device.mobile} {
-        display:none;
-    }
+  background: none;
+  border: none;
+  margin-top: -9px;
+  font-size: 42px;
+  padding: 0;
+  cursor: pointer;
 
-    @media ${device.desktop} {
-        display:block;
-    }
+  @media ${device.mobile} {
+    display: none;
+  }
+
+  @media ${device.desktop} {
+    display: block;
+  }
 `
 
 const LinkContainer = styled(motion.div)`
-    display:flex;
-    gap:10px;
-    flex:1 1 0;
-    
-    @media ${device.mobile} {
-        justify-content:right;
-    }
+  display: flex;
+  gap: 10px;
+  flex: 1 1 0;
 
-    @media ${device.desktop} {
-        justify-content:center;
-    }
+  @media ${device.mobile} {
+    justify-content: right;
+  }
+
+  @media ${device.desktop} {
+    justify-content: center;
+  }
 `
 
 const StyledHeader = styled.header`
@@ -135,11 +135,11 @@ const StyledHeader = styled.header`
   padding: 30px 80px;
 
   @media ${device.mobile} {
-      padding: 30px 30px;
+    padding: 30px 30px;
   }
 
   @media ${device.desktop} {
-      padding: 30px 80px;
+    padding: 30px 80px;
   }
 `
 
@@ -153,26 +153,26 @@ const StyledH1 = styled(motion.h1)`
   flex: 2 1 0;
   font-family: 'Roboto Mono', 'Noto Sans', sans-serif;
   letter-spacing: 3px;
-    
+
   @media ${device.mobile} {
-      font-size: 26px;
+    font-size: 26px;
   }
 
   @media ${device.desktop} {
-      font-size: 34px;
+    font-size: 34px;
   }
 `
 
 const StyledH2 = styled.h2`
-    color: #444444;
-    display: inline-block;
-    
-    @media ${device.mobile} {
-        font-size: 16px;
-    }
-    @media ${device.desktop} {
-        font-size: 24px;
-    }
+  color: #444444;
+  display: inline-block;
+
+  @media ${device.mobile} {
+    font-size: 16px;
+  }
+  @media ${device.desktop} {
+    font-size: 24px;
+  }
 `
 
 export default Header;

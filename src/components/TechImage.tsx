@@ -1,4 +1,4 @@
-import { motion, useAnimationControls } from "motion/react";
+import {motion, useAnimationControls} from "motion/react";
 import styled from "styled-components";
 import {device} from "../styles/styles.ts";
 
@@ -24,7 +24,7 @@ const linkVariants = {
   },
 };
 
-const TechImage = ({ ...delegated }) => {
+const TechImage = ({...delegated}) => {
   const controls = useAnimationControls();
 
   const onMouseEnter = () => {
@@ -37,7 +37,7 @@ const TechImage = ({ ...delegated }) => {
 
   return (
     <motion.div
-      style={{ display: 'inline-block', position: 'relative' }}
+      style={{display: 'inline-block', position: 'relative'}}
       variants={linkVariants}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -45,22 +45,22 @@ const TechImage = ({ ...delegated }) => {
       <StyledTechImage alt={delegated.name} whileHover={{scale: 1.3}} {...delegated} />
 
       <StyledText
-          { ...delegated }
-          animate={controls}
-          initial={'initial'}
-          variants={{
-            initial: {
-              scale: 0,
-            },
-            show: {
-              scale: 1,
-              zIndex: 2,
-            },
-            hide: {
-              scale: 0,
-              zIndex: 'auto',
-            },
-          }}
+        {...delegated}
+        animate={controls}
+        initial={'initial'}
+        variants={{
+          initial: {
+            scale: 0,
+          },
+          show: {
+            scale: 1,
+            zIndex: 2,
+          },
+          hide: {
+            scale: 0,
+            zIndex: 'auto',
+          },
+        }}
       >
         {delegated.name}
       </StyledText>
@@ -77,13 +77,13 @@ const StyledText = styled(motion.div)`
   position: absolute;
   margin-top: 8px;
 
-    @media ${device.mobile} {
-        display: none;
-    }
+  @media ${device.mobile} {
+    display: none;
+  }
 
-    @media ${device.desktop} {
-        display: block;
-    }
+  @media ${device.desktop} {
+    display: block;
+  }
 `
 
 const StyledTechImage = styled(motion.img)`

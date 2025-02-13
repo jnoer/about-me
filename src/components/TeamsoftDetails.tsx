@@ -1,7 +1,7 @@
 import {Title, WorkDetails} from "./WorkDetails.tsx";
 import TechImage, {containerVariants} from "./TechImage.tsx";
 import icons from "./icons.ts";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 
 const TeamsoftDetails = () => {
   return (

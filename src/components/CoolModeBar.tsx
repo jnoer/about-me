@@ -7,7 +7,7 @@ interface PropTypes {
   isScrolledToTop: boolean;
 }
 
-const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop } : PropTypes) => {
+const CoolModeBar = ({background, scrollYProgress, asicsInView, isScrolledToTop}: PropTypes) => {
   return (
     <motion.div
       initial={{opacity: 0}}
@@ -19,7 +19,8 @@ const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop
         position: 'fixed',
         bottom: 0,
         left: 0,
-        right: 0 }}
+        right: 0
+      }}
     >
       <div style={{
         background: 'linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red)',
@@ -28,14 +29,14 @@ const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop
       }}
       />
 
-      <div style = {{ padding: '5px' }}>
+      <div style={{padding: '5px'}}>
         <span>scrollYProgress:</span>
         <motion.span>
           {scrollYProgress}
         </motion.span>
 
         <div>asicsInView: {asicsInView ? 'true' : 'false'}</div>
-        <div>isScrolledToTop: {isScrolledToTop  ? 'true' : 'false'}</div>
+        <div>isScrolledToTop: {isScrolledToTop ? 'true' : 'false'}</div>
 
         <span>background:</span>
         <motion.span>
@@ -43,6 +44,7 @@ const CoolModeBar = ({ background, scrollYProgress, asicsInView, isScrolledToTop
         </motion.span>
       </div>
     </motion.div>
-  )}
+  )
+}
 
 export default CoolModeBar;

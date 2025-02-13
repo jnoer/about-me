@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
     height: 90vh;
 `
 
-const CompanyImageContainer = ({ children, showLine = true, ...rest } : Props) => {
+const CompanyImageContainer = ({children, showLine = true, ...rest}: Props) => {
   return (
     <StyledContainer {...rest}>
       {children}
