@@ -88,7 +88,7 @@ function App() {
   }
 
   const isUwwInView = () => {
-    return  !isScrolledToTop && !teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
+    return uwwInView && !asicsInView && !teamsoftInView && !asicsInView && !acquiaInView && !entegralInView;
   }
 
   if(isAsicsInView() && datePosition !== datePositions[0]) {
