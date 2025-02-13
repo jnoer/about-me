@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import {device, maxWidth} from "../styles/styles.ts";
 import {Dispatch, SetStateAction} from "react";
 
-// const smiley = <div>☺️</div>;
 const smiley = <div>🤓</div>;
 const cool = <div>😎</div>
 
@@ -13,6 +12,27 @@ interface PropTypes {
   isCoolMode: boolean;
   setCoolMode:  Dispatch<SetStateAction<boolean>>;
 }
+
+const containerVariants = {
+  out: {
+    y: 0,
+  },
+  in: {
+    y: 0,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const linkVariants = {
+  out: {
+    scale: .4,
+  },
+  in: {
+    scale: 1,
+  },
+};
 
 const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
   const onCoolModeClick = () => {
@@ -23,15 +43,15 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
     <StyledHeader>
       <TitleSection>
         <StyledH1
-          initial={{x: 0, y: -100, scale: .5 }}
-          animate={{x: 0, y: 0, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5, type: 'spring'}}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 5 }}
         >
           Jason Noer
         </StyledH1>
 
-        <LinkContainer>
-          <a href="https://github.com/jnoer/about-me/" target="_blank">
+        <LinkContainer variants={containerVariants} initial="out" animate="in">
+          <motion.a href="https://github.com/jnoer/about-me/" target="_blank" variants={linkVariants}>
             <motion.img
               alt="GitHub"
               src={gitHubImage}
@@ -39,9 +59,9 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
             />
-          </a>
+          </motion.a>
 
-          <a href="mailto:jason.noer@gmail.com" target="_blank">
+          <motion.a href="mailto:jason.noer@gmail.com" target="_blank" variants={linkVariants}>
             <motion.img
               alt="email"
               src={mailIcon}
@@ -49,11 +69,12 @@ const Header = ({ isCoolMode, setCoolMode } : PropTypes) => {
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
             />
-          </a>
+          </motion.a>
 
           <StyledCoolModeButton
             onClick={onCoolModeClick}
             whileHover={{ scale: 1.3, rotate: 180 }}
+            variants={linkVariants}
           >
             {isCoolMode ? cool : smiley }
           </StyledCoolModeButton>
@@ -90,7 +111,7 @@ const StyledCoolModeButton = styled(motion.div)`
     }
 `
 
-const LinkContainer = styled.div`
+const LinkContainer = styled(motion.div)`
     display:flex;
     gap:10px;
     flex:1 1 0;

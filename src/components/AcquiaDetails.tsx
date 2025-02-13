@@ -27,7 +27,7 @@ const AcquiaDetails = () => {
         style={{marginTop: '30px'}}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        transition={{duration: 1, delay: .75}}
+        transition={{duration: .5, delay: .5}}
       >
         <TechImage src={icons.react.icon} name={icons.react.name}/>
         <TechImage src={icons.angular.icon} name={icons.angular.name}/>

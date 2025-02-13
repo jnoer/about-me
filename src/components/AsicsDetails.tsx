@@ -14,7 +14,7 @@ const AsicsDetails = () => {
         style={{marginTop: '30px'}}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        transition={{duration: 1, delay: .75}}
+        transition={{duration: .5, delay: .5}}
       >
         <TechImage src={Icons.typescript.icon} name={Icons.typescript.name}/>
         <TechImage src={Icons.react.icon} name={Icons.react.name}/>

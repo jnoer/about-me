@@ -18,7 +18,7 @@ const TeamsoftDetails = () => {
         style={{marginTop: '30px'}}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        transition={{duration: 1, delay: .75}}
+        transition={{duration: .5, delay: .5}}
       >
         <TechImage src={icons.java.icon} name={icons.java.name}/>
         <TechImage src={icons.spring.icon} name={icons.spring.name}/>
