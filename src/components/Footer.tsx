@@ -21,11 +21,11 @@ const Footer = ({ ref }: PropsType) => {
       <div style={{alignSelf: 'center', justifySelf: 'center'}}>
       <h2>This site made with ☕️ and . . .</h2>
       <div style={{marginTop: 10}}>
-        <TechImage src={icons.react.icon} name={icons.react.name}/>
-        <TechImage src={icons.vite.icon} name={icons.vite.name}/>
-        <TechImage src={icons.styled.icon} name={icons.styled.name}/>
-        <TechImage src={icons.motion.icon} name={icons.motion.name}/>
-        <TechImage src={icons.webstorm.icon} name={icons.webstorm.name}/>
+        <TechImage src={icons.react.icon} name={icons.react.name} style={{backgroundColor: 'unset'}}/>
+        <TechImage src={icons.vite.icon} name={icons.vite.name} style={{backgroundColor: 'unset'}}/>
+        <TechImage src={icons.styled.icon} name={icons.styled.name} style={{backgroundColor: 'unset'}}/>
+        <TechImage src={icons.motion.icon} name={icons.motion.name} style={{backgroundColor: 'unset'}}/>
+        <TechImage src={icons.webstorm.icon} name={icons.webstorm.name} style={{backgroundColor: 'unset'}}/>
       </div>
       </div>
     </StyledFooter>

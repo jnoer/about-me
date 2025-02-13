@@ -41,11 +41,11 @@ const TechImage = ({ ...delegated }) => {
       variants={linkVariants}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onTouchStart={onMouseEnter}
     >
       <StyledTechImage alt={delegated.name} whileHover={{scale: 1.3}} {...delegated} />
 
       <StyledText
+          { ...delegated }
           animate={controls}
           initial={'initial'}
           variants={{
