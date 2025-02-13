@@ -1,6 +1,6 @@
 # Jason Noer
 
-<https://jasonnoer-resume.netlify.app/>
+<https://jasonnoer-about.netlify.app/>
 
 ![](https://github.com/jnoer/about-me/blob/main/Screenshot.png?raw=true)
 
